@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero is-medium is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title" align="center">
+        Found a bug 🐛, create an 
+		<button class="button is-link" href="" target="_blank">issue</button>
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-medium is-success is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title" align="center">
+        Help others by submitting tutorials you follow.<br>
+        🤗
+      </h1>
+    </div>
+  </div>
+</section>
+<section class="hero is-medium is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+        <form action="/thankyou/" method="post">
+          {% csrf_token %}
+              <div class="field">
+                <label class="label">Link</label>
+                <div class="control">
+                  <input class="input" type="url" name="tlink" placeholder="paste tutorial link here">
+                </div>
+            </div>
+
+          <div class="field">
+            <label class="label">Type</label>
+            <div class="control">
+              <div class="select">
+                <select name="ttype">
+                    <option value ="video">Video</option>
+                    <option value ="article">Article</option>
+                    <option value ="course">Course</option>
+                    <option value ="docs">Docs</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link" type="submit">Submit</button>
+            </div>
+            <div class="control">
+              <button class="button is-text">Cancel</button>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
+

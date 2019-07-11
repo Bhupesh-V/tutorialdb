@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>tutorialdb</title>
+	<meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style type="text/css">
+      a.navbar-item {
+          cursor: pointer;
+          color: white;
+      }
+    .navbar-menu {
+          background-color: #2B2828;
+          box-shadow: 0 8px 16px rgba(10,10,10,.1);
+          padding: .5rem 0;
+      }
+  </style>
+</head>
+<body>
+	<nav class="navbar is-active is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      {% load static %}
+      <img src="{% static 'app/tutorialdb.png' %}" width="112" height="28">
+    </a>
+
+    <a role="button" class="navbar-burger burger is-dark" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"  style="background-color: white;"></span>
+      <span aria-hidden="true"  style="background-color: white;"></span>
+      <span aria-hidden="true"  style="background-color: white;"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu is-dark" >
+    <div class="navbar-start is-dark">
+      <a class="navbar-item" href="/">
+        Home
+      </a>
+      <a class="navbar-item" href="/api">
+        API
+      </a>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary" href="/contribute">
+            <strong>Contribute</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="hero is-medium is-dark is-bold">
+  <div class="hero-body">
+    <center>
+      <div class="container">
+      {% load static %}
+      <img src="{% static 'app/tutorialdb.png' %}">
+    </div>
+    <h1 class="subtitle">A search engine for programming/dev tutorials.</h1>
+    </center>
+  </div>
+</section>
+
+
+<section class="hero is-medium is-success is-bold">
+  <div class="hero-body"   style="background-color: orange;">
+    <div class="container">
+      <h1 class="title" align="center">
+       Add Stuff here for introduction
+      </h1>    
+    </div>
+  </div>
+</section>
+
+    <section class="section">
+      <div class="container">
+        <h1 class="title">🔍 Search Tutorials</h1>
+          <form action="{% url 'search_results' %}" method="get">
+
+            <div class="field">
+              <div class="control">
+                <input class="input is-rounded" name="q" type="text" placeholder="to do app in ..">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Filter</label>
+              <div class="field is-grouped">
+                <div class="control">
+                  <div class="select is-rounded">
+                    <select name = "ttype">
+                        <option value ="video">Video</option>
+                        <option value ="article">Article</option>
+                        <option value ="course">Course</option>
+                        <option value ="docs">Docs</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <div class="control">
+                <button class="button is-primary is-rounded" type="submit">Submit</button>
+              </div>
+          </div>
+          </form>
+      </div>
+    </section>
+
+	{% block content %}
+	{% endblock %}
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>tutorialdb</strong> built with 💓 and 🎶 by <a href="https://twitter.com/bhupeshimself">Bhupesh Varshney</a>.
+    </p>
+  </div>
+</footer>
+
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', () => {
+	  // Get all "navbar-burger" elements
+	  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+	  // Check if there are any navbar burgers
+	  if ($navbarBurgers.length > 0) {
+	    // Add a click event on each of them
+	    $navbarBurgers.forEach( el => {
+	      el.addEventListener('click', () => {
+	        // Get the target from the "data-target" attribute
+	        const target = el.dataset.target;
+	        const $target = document.getElementById(target);
+	        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+	        el.classList.toggle('is-active');
+	        $target.classList.toggle('is-active');
+	      });
+	    });
+	  }
+	});
+</script>
+</body>
+</html>
+
