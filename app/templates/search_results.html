@@ -12,7 +12,7 @@
         <div class="tile">
         {% for tag in tutorial.tags.all %}
         <span class="tag">
-          <b>{{ tag }}</b>
+          <b>📌 {{ tag }}</b>
         </span>
         {% endfor %}
         </div>
@@ -21,6 +21,6 @@
     </div>
   </div>
   {% else %}
-  <h2 class="subtitle notification is-primary" align="center">Ah! Sorry No Results</h2>
+  <h2 class="subtitle notification is-primary" align="center">Ah! Sorry, No Results 🙀</h2>
   {% endif %}
 {% endblock content %}

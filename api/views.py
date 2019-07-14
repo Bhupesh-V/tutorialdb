@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import tutorialSerializer, tagSerializer, tutorialPOST
 from django.shortcuts import render
-
+from app.models import tutorial, tag
 
 # Just wraps a simple HTTP Response to a JSON Response
 class JSONResponse(HttpResponse):
@@ -49,7 +49,6 @@ def tags(request):
 	"""
 	Returns all tags
 
-	Description: Hello
 	"""
 	tags = tag.objects.all()
 	serializer = tagSerializer(tags, many=True)

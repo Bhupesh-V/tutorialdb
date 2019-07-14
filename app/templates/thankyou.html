@@ -1,4 +1,16 @@
 {% extends 'base.html'%}
+{% load staticfiles %}
 {% block content %}
-<h1 class="title">thanks</h1>
+<center>
+<section class="hero is-medium is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Thanks<br>
+        <img src="{% static 'app/emoji1.png' %}" height="50" width="50">
+      </h1>
+    </div>
+  </div>
+</section>
+</center>
 {% endblock %}
