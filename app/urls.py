@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     path('search/', views.search_query, name='search_results'),
+    path('latest/', views.latest),
     path('', HomePageView.as_view(), name='home'),
     path('api/', include('api.urls')),
     path('contribute/', ContributeView.as_view()),

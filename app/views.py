@@ -10,13 +10,17 @@ from parser import parser
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
+def latest(request):
+    results = tutorial.objects.all().order_by('-id')[:10]
+    results = { 'results': results }
+    return render(request, 'latest.html', results)
 
 def search_query(request):
     query = request.GET.get('q')
     tutorialType = request.GET.get('ttype')
     list_query = query.split()
     object_list = tutorial.objects.filter(
-        (Q(title__icontains=query) | Q(tags__name__in=list_query)) & Q(category__icontains=tutorialType)
+        (Q(title__icontains=query) & Q(tags__name__in=list_query)) & Q(category__icontains=tutorialType)
     ).distinct()
     context = {'tquery':query, 'object_list':object_list}
     paginator = Paginator(context, 10)
