@@ -65,7 +65,7 @@
   </div>
 </section>
 
-
+<center>
 <section class="hero is-medium is-success is-bold">
   <div class="hero-body"   style="background-color: orange;">
     <div class="container">
@@ -75,10 +75,15 @@
     </div>
   </div>
 </section>
+</center>
 
     <section class="section">
       <div class="container">
         <h1 class="title" align="center">🔍 Search Tutorials</h1>
+        <center>
+        <img src="{% static 'app/search.png' %}" height="100" width="100">
+        </center>
+
           <form action="{% url 'search_results' %}" method="get">
 
             <div class="field">
@@ -118,6 +123,7 @@
   <div class="content has-text-centered">
     <p>
       <strong>tutorialdb</strong> built with 💓 and 🎶 by <a href="https://twitter.com/bhupeshimself">Bhupesh Varshney</a>.
+      Illustrations by <a href="https://lukaszadam.com/illustrations">lukaszadam</a>
     </p>
   </div>
 </footer>

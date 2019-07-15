@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block content %}
 <section class="hero is-medium is-primary is-bold">
   <div class="hero-body">
     <div class="container">
       <h1 class="title" align="center">
-        Found a bug 🐛, create an 
+        Found a bug 🐛 ❓<br>
+        Have a feature ✨ request ❓<br> 
+        create an 
 		<button class="button is-link" href="" target="_blank">issue</button>
       </h1>
     </div>
@@ -16,7 +18,8 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title" align="center">Or just,<br>
-        Help others by submitting tutorials you follow.<br>
+        <img src="{% static 'app/help.svg' %}" height="100" width="100">
+        <br>Help others by submitting tutorials you follow.<br>
         🤗
       </h1>
     </div>
