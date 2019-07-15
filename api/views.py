@@ -31,6 +31,15 @@ def tutorial_Tags(request, tags):
 	serializer = tutorialSerializer(customTutorials, many=True)
 	return JSONResponse(serializer.data)
 
+@api_view(['GET'])
+def latest(request):
+	"""
+	Return latest 10 tutorials from tutorialdb
+	"""
+	results = tutorial.objects.all().order_by('-id')[:10]
+	serializer = tutorialSerializer(results, many=True)
+	return JSONResponse(serializer.data)
+
 
 @api_view(['GET'])
 def tutorial_Tags_Type(request, tags, ttype):
