@@ -6,14 +6,14 @@ import json
 
 
 def validTag(tag):
-    with open('tutorialParser/tags.json') as json_file:
+    with open('tags.json') as json_file:
         data = json.load(json_file)
     if tag in data['tags']: return True
     else: return False
 
 
 def totalTags():
-    with open('tutorialParser/tags.json') as json_file:
+    with open('tags.json') as json_file:
         data = json.load(json_file)
 
     return f'{len(data["tags"])}'

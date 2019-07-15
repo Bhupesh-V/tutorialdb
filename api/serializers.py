@@ -18,7 +18,7 @@ class tutorialSerializer(serializers.ModelSerializer):
 		model = tutorial
 		fields = ('__all__')
 
-class tutorialPOST(serializers.ModelSerializer):
+class tutorialPOST(serializers.Serializer):
 
 	class Meta:
 		model = tutorial

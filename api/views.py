@@ -7,7 +7,10 @@ from rest_framework import status
 from .serializers import tutorialSerializer, tagSerializer, tutorialPOST
 from django.shortcuts import render
 from app.models import tutorial, tag
+from django.utils import timezone
+from parser.Parser import generateTags
 
+ 
 # Just wraps a simple HTTP Response to a JSON Response
 class JSONResponse(HttpResponse):
     def __init__(self, data, **kwargs):
@@ -76,8 +79,15 @@ def tutorials(request):
 		serializer = tutorialSerializer(tutorials, many=True)
 		return JSONResponse(serializer.data)
 	elif request.method == 'POST':
-		serializer = tutorialPOST(data = request.data)
-		if serializer.is_valid():
-			print(serializer)
+		postserializer = tutorialPOST(data = request.data)
+		if postserializer.is_valid():
+			title, tags = generateTags(request.data['link'])
+			tutorial.objects.create(
+				title = title,
+				tags = tags,
+				link = request.data['link'],
+				category = request.data['category'],
+				created_date = timezone.now
+			)
 			return JSONResponse({"message " : "submitted" }, status=status.HTTP_202_ACCEPTED)
 		return JSONResponse({"message":"not_valid"})
