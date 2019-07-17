@@ -3,17 +3,21 @@ from bs4 import BeautifulSoup as bs
 import re
 import time
 import json
+import os
+from django.conf import settings
 
+
+tagLocation = os.path.join(settings.BASE_DIR, 'taggie/tags.json')
 
 def validTag(tag):
-    with open('tags.json') as json_file:
+    with open(tagLocation) as json_file:
         data = json.load(json_file)
     if tag in data['tags']: return True
     else: return False
 
 
 def totalTags():
-    with open('tags.json') as json_file:
+    with open(tagLocation) as json_file:
         data = json.load(json_file)
 
     return f'{len(data["tags"])}'

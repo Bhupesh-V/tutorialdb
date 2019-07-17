@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'app',
     'api',
-    'parser',
+    'taggie',
 ]
 
 MIDDLEWARE = [

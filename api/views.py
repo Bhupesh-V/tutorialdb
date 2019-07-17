@@ -8,7 +8,7 @@ from .serializers import tutorialSerializer, tagSerializer, tutorialPOST
 from django.shortcuts import render
 from app.models import tutorial, tag
 from django.utils import timezone
-from parser.Parser import generateTags
+from taggie.parser import generateTags
 
  
 # Just wraps a simple HTTP Response to a JSON Response
@@ -63,9 +63,12 @@ def tags(request):
 
 	"""
 	tags = tag.objects.all()
+	print(tags)
 	serializer = tagSerializer(tags, many=True)
 	return JSONResponse(serializer.data)
 
+def filterTags(tags):
+	print()
 
 @api_view(['GET', 'POST'])
 def tutorials(request):
@@ -81,13 +84,19 @@ def tutorials(request):
 	elif request.method == 'POST':
 		postserializer = tutorialPOST(data = request.data)
 		if postserializer.is_valid():
-			title, tags = generateTags(request.data['link'])
-			tutorial.objects.create(
-				title = title,
-				tags = tags,
-				link = request.data['link'],
-				category = request.data['category'],
-				created_date = timezone.now
+			# generated from my parser
+			title, tagList = generateTags(request.data['link'])
+			print(title)
+			print(tagList)
+
+			# this is woring fine
+			tutorialObject = tutorial.objects.create(
+				title=title, 
+				link=request.data['link'], 
+				category = request.data['category']
 			)
+			# this generates error
+			tutorialObject.tags.set(tagList)
+
 			return JSONResponse({"message " : "submitted" }, status=status.HTTP_202_ACCEPTED)
 		return JSONResponse({"message":"not_valid"})

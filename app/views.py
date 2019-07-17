@@ -5,7 +5,7 @@ from django.db.models import Q
 from . models import tag, tutorial
 import re
 from django.core.paginator import Paginator
-from parser.Parser import generateTags
+from taggie.parser import generateTags
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
