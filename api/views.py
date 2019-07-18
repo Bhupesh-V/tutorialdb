@@ -1,5 +1,4 @@
 from django.http import HttpResponse
-from rest_framework.views import APIView
 from rest_framework.renderers import JSONRenderer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -7,7 +6,6 @@ from rest_framework import status
 from .serializers import tutorialSerializer, tagSerializer, tutorialPOST
 from django.shortcuts import render
 from app.models import tutorial, tag
-from django.utils import timezone
 from taggie.parser import generateTags
 
  
@@ -63,12 +61,9 @@ def tags(request):
 
 	"""
 	tags = tag.objects.all()
-	print(tags)
 	serializer = tagSerializer(tags, many=True)
 	return JSONResponse(serializer.data)
 
-def filterTags(tags):
-	print()
 
 @api_view(['GET', 'POST'])
 def tutorials(request):
@@ -84,19 +79,15 @@ def tutorials(request):
 	elif request.method == 'POST':
 		postserializer = tutorialPOST(data = request.data)
 		if postserializer.is_valid():
-			# generated from my parser
-			title, tagList = generateTags(request.data['link'])
-			print(title)
-			print(tagList)
-
-			# this is woring fine
-			tutorialObject = tutorial.objects.create(
-				title=title, 
-				link=request.data['link'], 
-				category = request.data['category']
-			)
-			# this generates error
-			tutorialObject.tags.set(tagList)
-
-			return JSONResponse({"message " : "submitted" }, status=status.HTTP_202_ACCEPTED)
-		return JSONResponse({"message":"not_valid"})
+			linkCount = tutorial.objects.filter(link = request.data['link']).count()
+			if linkCount == 0:
+				tags, title = generateTags(request.data['link'])
+				tutorialObject = tutorial.objects.create(
+					title = title, 
+					link = request.data['link'], 
+					category = request.data['category']
+				)
+				tagObjList = tag.objects.filter(name__in = tags)
+				tutorialObject.tags.set(tagObjList)
+			return JSONResponse({"message " : "Created, Thanks" }, status=status.HTTP_201_CREATED)
+		return JSONResponse({"message":"Not Valid, Try Again"}, status=status.HTTP_406_NOT_ACCEPTABLE)
