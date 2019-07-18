@@ -2,6 +2,7 @@ from django.views.generic import TemplateView, ListView, FormView
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.db.models import Q
+from django.contrib import messages
 from . models import tag, tutorial
 import re
 from django.core.paginator import Paginator
@@ -32,8 +33,14 @@ class ContributeView(TemplateView):
         return render(request, 'contribute.html')
     
     def post(self, request):
-        """
-        Validate data here from request.POST and 
-        run the parser & update database.
-        """
+        linkCount = tutorial.objects.filter(link = request.POST['tlink']).count()
+        if linkCount == 0:
+            tags, title = generateTags(request.POST['tlink'])
+            tutorialObject = tutorial.objects.create(
+                title = title, 
+                link = request.POST['tlink'], 
+                category = request.POST['tcategory']
+            )
+            tagObjList = tag.objects.filter(name__in = tags)
+            tutorialObject.tags.set(tagObjList)
         return render(request, 'thankyou.html')

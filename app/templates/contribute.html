@@ -41,7 +41,7 @@
             <label class="label">Type</label>
             <div class="control">
               <div class="select">
-                <select name="ttype">
+                <select name="tcategory">
                     <option value ="video">Video</option>
                     <option value ="article">Article</option>
                     <option value ="course">Course</option>
@@ -58,6 +58,13 @@
           </div>
         </form>
     </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
   </div>
 </section>
 
