@@ -14,7 +14,7 @@
           {% for tag in tutorial.tags.all %}
           <span class="tag">
             <b>📌 {{ tag }}</b>
-          </span>
+          </span>&nbsp;
           {% endfor %}
           </div>
           </div>
@@ -22,29 +22,33 @@
       </div>
     </div>
 
-  {% if object_list.has_other_pages %}
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-      {% if object_list.has_previous %}
-        <a class="pagination-previous" href="?page={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.ttype %}&ttype={{ request.GET.ttype }}{% endif %}">Previous</a>
-        {% else %}
-        <a class="pagination-previous" href="#!" title="This is the first page" disabled >Previous</a>
-      {% endif %}
-      {% if object_list.has_next %}
-          <a href="?page={{ object_list.next_page_number }}{% if request.GET.q %}&q={{request.GET.q }}{% endif %}{% if request.GET.ttype %}&ttype={{ request.GET.ttype}}{% endif %}" class="pagination-next">Next page</a>
-      {% else %}
-          <a class="pagination-next" href="#!" disabled >Next</a>
-      {% endif %}
-      <ul class="pagination-list">
-        {% for num in object_list.paginator.page_range %}
-            {% if object_list.number == num %}
-                <li><a class="pagination-link" href="#!">{{ num }}</a></li>
+  <div class="section">
+    <div class="container">
+      {% if object_list.has_other_pages %}
+        <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+          {% if object_list.has_previous %}
+            <a class="pagination-previous" href="?page={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">Previous</a>
             {% else %}
-                <li><a class="pagination-link" href="?page={{ num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.ttype %}&ttype={{ request.GET.ttype }}{% endif %}" >{{ num }}</a></li>
-            {% endif %}
-        {% endfor %}
-      </ul>
-    </nav>
-  {% endif %}
+            <a class="pagination-previous" href="#!" title="This is the first page" disabled >Previous</a>
+          {% endif %}
+          {% if object_list.has_next %}
+              <a href="?page={{ object_list.next_page_number }}{% if request.GET.q %}&q={{request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category}}{% endif %}" class="pagination-next">Next page</a>
+          {% else %}
+              <a class="pagination-next" href="#!" disabled >Next</a>
+          {% endif %}
+          <ul class="pagination-list">
+            {% for num in object_list.paginator.page_range %}
+                {% if object_list.number == num %}
+                    <li><a class="pagination-link" href="#!">{{ num }}</a></li>
+                {% else %}
+                    <li><a class="pagination-link" href="?page={{ num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}" >{{ num }}</a></li>
+                {% endif %}
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+  </div>
 
   {% else %}
     <h2 class="subtitle notification is-primary" align="center">

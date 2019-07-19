@@ -5,7 +5,8 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Start creating stuff with tutorialdb REST API
+        Are you a creator ? <br>
+        Try tutorialdb REST API 👇
       </h1>
     </div>
   </div>
@@ -14,7 +15,7 @@
 
 <section class="hero is-medium" style="background-color: orange">
 	<div class="hero-body">
-	  <h1 class="title">v1.0</h1>
+	  <h1 class="title">v1.2</h1>
 	  <div>
 	  	<details>
 	  		<summary class="subtitle">See Docs</summary>
@@ -30,7 +31,15 @@
 	  			<tr>
 	  				<td><code>POST</code></td>
 	  				<td><code>/api/tutorials</code></td>
-	  				<td><p>Submit a tutorial.</p></td>
+	  				<td>
+	  					<p>Submit a tutorial.</p>
+	  					<code>
+	  					{
+	  						"link":"https://abc.xyz",
+	  						"category":"video"
+	  					}
+	  					</code>
+	  				</td>
 	  			</tr>
 	  			<tr>
 	  				<td><code>GET</code></td>
@@ -44,13 +53,20 @@
 	  			</tr>
 	  			<tr>
 	  				<td><code>GET</code></td>
-	  				<td><code>/api/tutorials/{tags}/{type}/</code></td>
+	  				<td><code>/api/tutorials/{tags}/{category}/</code></td>
 	  				<td>
-	  					<p>Returns tutorials filtered by tags and type.<br>
-	  						Only one type can be specified at a time for e.g <br>
+	  					<p>Returns tutorials filtered by tags and category.<br>
+	  						Only one category can be specified at a time for e.g <br>
 	  						<code>/api/tutorials/python,api/video</code> or <br>
-	  						<code>/api/tutorials/react/articles</code>
+	  						<code>/api/tutorials/react/article</code>
 	  					</p>
+	  					Available Categories : 
+  						<ul>
+  							<li>article</li>
+  							<li>video</li>
+  							<li>docs</li>
+  							<li>course</li>
+  						</ul>
 	  				</td>
 	  			</tr>
 	  			<tr>

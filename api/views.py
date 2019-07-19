@@ -43,13 +43,13 @@ def latest(request):
 
 
 @api_view(['GET'])
-def tutorial_Tags_Type(request, tags, ttype):
+def tutorial_Tags_Category(request, tags, category):
 	"""
-	Return tutorials with a {tag} and {type}
+	Return tutorials with a {tag} and {category}
 	"""
 	tags = tags.split(',')
-	ttype = ttype.split(',')
-	customTutorials = tutorial.objects.filter(tags__name__in = tags, category__in = ttype).distinct()
+	category = category.split(',')
+	customTutorials = tutorial.objects.filter(tags__name__in = tags, category__in = category).distinct()
 	serializer = tutorialSerializer(customTutorials, many=True)
 	return JSONResponse(serializer.data)
 
@@ -82,12 +82,15 @@ def tutorials(request):
 			linkCount = tutorial.objects.filter(link = request.data['link']).count()
 			if linkCount == 0:
 				tags, title = generateTags(request.data['link'])
-				tutorialObject = tutorial.objects.create(
-					title = title, 
-					link = request.data['link'], 
-					category = request.data['category']
-				)
-				tagObjList = tag.objects.filter(name__in = tags)
-				tutorialObject.tags.set(tagObjList)
-			return JSONResponse({"message " : "Created, Thanks" }, status=status.HTTP_201_CREATED)
+				if 'other' in tags:
+					return JSONResponse({"message " : "Not a tutorial link" }, status=HTTP_406_NOT_ACCEPTABLE)
+				else:
+					tutorialObject = tutorial.objects.create(
+						title = title, 
+						link = request.data['link'], 
+						category = request.data['category']
+					)
+					tagObjList = tag.objects.filter(name__in = tags)
+					tutorialObject.tags.set(tagObjList)
+					return JSONResponse({"message " : "Created, Thanks" }, status=status.HTTP_201_CREATED)
 		return JSONResponse({"message":"Not Valid, Try Again"}, status=status.HTTP_406_NOT_ACCEPTABLE)

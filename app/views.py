@@ -18,7 +18,7 @@ def latest(request):
 
 def search_query(request):
     query = request.GET.get('q')
-    tutorialType = request.GET.get('ttype')
+    tutorialType = request.GET.get('category')
     list_query = query.split()
 
     object_list = tutorial.objects.filter(

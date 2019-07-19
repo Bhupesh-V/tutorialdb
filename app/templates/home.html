@@ -63,14 +63,14 @@
       <div class="container">
       <img src="{% static 'app/tutorialdb.png' %}">
     </div>
-    <h1 class="subtitle">A search engine for programming/dev tutorials.</h1>
+    <h1 class="subtitle">A search 🔎 engine for programming/dev tutorials.</h1>
     </center>
   </div>
 </section>
 
 <center>
 <section class="hero is-medium is-success is-bold">
-  <div class="hero-body"   style="background-color: orange;">
+  <div class="hero-body" style="background-color: orange;">
     <div class="container">
       <h3 class="title is-4">🙅🏽‍♂️ No useless stuff or ads.</h3>
       <h3 class="title is-4">✅ Direct Links to tutorials.</h3>
@@ -100,7 +100,7 @@
               <div class="field is-grouped">
                 <div class="control">
                   <div class="select is-rounded">
-                    <select name = "ttype">
+                    <select name = "category">
                         <option disabled selected value>select filter</option>
                         <option value ="video">Videos</option>
                         <option value ="article">Articles</option>
@@ -111,9 +111,9 @@
                 </div>
               </div>
             </div>
-              <div class="control">
-                <button class="button is-primary is-rounded" type="submit">Submit</button>
-              </div>
+            <div class="control">
+              <button class="button is-primary is-rounded" type="submit">Submit</button>
+            </div>
           </form>
       </div>
     </section>
@@ -124,12 +124,13 @@
 <footer class="footer">
   <div class="content has-text-centered">
     <p>
-      <strong>tutorialdb</strong> built with 💓 and 🎶 by <a href="https://twitter.com/bhupeshimself">Bhupesh Varshney</a>.
+      <strong>tutorialdb</strong> built with 💓 and 🎶 by <a href="https://twitter.com/bhupeshimself">Bhupesh Varshney</a>.<br>
       Illustrations by <a href="https://lukaszadam.com/illustrations">lukaszadam</a>
     </p>
+    <button href="https://www.patreon.com/bePatron?u=18082750" data-patreon-widget-type="become-patron-button">Become a Patron!</button>
   </div>
 </footer>
-
+<script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
 <script src="{% static 'app/js/burger.js' %}"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </body>
