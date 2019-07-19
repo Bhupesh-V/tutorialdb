@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.contrib import messages
 from . models import tag, tutorial
 import re
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggie.parser import generateTags
 
 class HomePageView(TemplateView):
@@ -20,11 +20,22 @@ def search_query(request):
     query = request.GET.get('q')
     tutorialType = request.GET.get('ttype')
     list_query = query.split()
+
     object_list = tutorial.objects.filter(
         (Q(title__icontains=query) & Q(tags__name__in=list_query)) & Q(category__icontains=tutorialType)
     ).distinct()
+
+    paginator = Paginator(object_list, 3)
+    page = request.GET.get('page')
+    try:
+        object_list = paginator.page(page)
+    except PageNotAnInteger:
+        object_list = paginator.page(1)
+    except EmptyPage:
+        object_list = paginator.page(paginator.num_pages)
+
     context = {'tquery':query, 'object_list':object_list}
-    paginator = Paginator(context, 10)
+
     return render(request, 'search_results.html', context)
 
 
