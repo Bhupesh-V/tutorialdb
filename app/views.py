@@ -18,12 +18,17 @@ def latest(request):
 
 def search_query(request):
     query = request.GET.get('q')
-    tutorialType = request.GET.get('category')
+    category = request.GET.get('category')
     list_query = query.split()
 
-    object_list = tutorial.objects.filter(
-        (Q(title__icontains=query) & Q(tags__name__in=list_query)) & Q(category__icontains=tutorialType)
-    ).distinct()
+    if category is not None:
+        object_list = tutorial.objects.filter(
+            (Q(title__icontains=query) & Q(tags__name__in=list_query)) & Q(category__icontains=category)
+        ).distinct()
+    else:
+        object_list = tutorial.objects.filter(
+            (Q(title__icontains=query) & Q(tags__name__in=list_query))
+        ).distinct()
 
     paginator = Paginator(object_list, 3)
     page = request.GET.get('page')

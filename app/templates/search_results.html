@@ -11,13 +11,13 @@
       <div class="box">
           <a href="{{ tutorial.link }}" target="_blank">{{ tutorial.title }}</a>
           <div class="tile">
-          {% for tag in tutorial.tags.all %}
-          <span class="tag">
-            <b>📌 {{ tag }}</b>
-          </span>&nbsp;
-          {% endfor %}
+            {% for tag in tutorial.tags.all %}
+            <span class="tag">
+              <b>📌 {{ tag }}</b>
+            </span>&nbsp;
+            {% endfor %}
           </div>
-          </div>
+      </div>
       {% endfor %}    
       </div>
     </div>
