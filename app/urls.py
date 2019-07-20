@@ -10,5 +10,6 @@ urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('api/', include('api.urls')),
     path('contribute/', ContributeView.as_view()),
+    path('tags/', views.tags, name='tags'),
     path('thankyou/', ContributeView.as_view()),
 ]

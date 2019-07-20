@@ -71,5 +71,15 @@
 <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
 <script src="{% static 'app/js/burger.js' %}"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<script type="text/javascript">
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+</script>
 </body>
 </html>

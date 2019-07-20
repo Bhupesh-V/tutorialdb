@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="section">
+	<div class="container">
+		{% if object_list %}
+		    {% for tag in object_list %}
+		    <span class="tag box">
+		    	<h4>{{ tag.name }}</h4>
+		    </span>&nbsp;
+	      	{% endfor %}  
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

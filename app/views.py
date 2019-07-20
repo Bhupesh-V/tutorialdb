@@ -60,3 +60,10 @@ class ContributeView(TemplateView):
             tagObjList = tag.objects.filter(name__in = tags)
             tutorialObject.tags.set(tagObjList)
         return render(request, 'thankyou.html')
+
+
+def tags(request):
+    object_list = tag.objects.all()
+    context = {'object_list':object_list}
+
+    return render(request, 'tags.html', context)
