@@ -37,7 +37,7 @@ def latest(request):
 	"""
 	Return latest 10 tutorials from tutorialdb
 	"""
-	results = tutorial.objects.all().order_by('-id')[:10]
+	results = tutorial.objects.all().order_by('-created_date')[:10]
 	serializer = tutorialSerializer(results, many=True)
 	return JSONResponse(serializer.data)
 

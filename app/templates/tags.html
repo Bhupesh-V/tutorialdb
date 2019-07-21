@@ -4,10 +4,11 @@
 
 <div class="section">
 	<div class="container">
+		<h2 class="title is-1">Tags</h2>
 		{% if object_list %}
 		    {% for tag in object_list %}
-		    <span class="tag box">
-		    	<h4>{{ tag.name }}</h4>
+		    <span class="tag box" name="colorpad">
+		    	<a href="/tags/tag={{ tag.name }}" class="title is-5">#{{ tag.name }}</a>
 		    </span>&nbsp;
 	      	{% endfor %}  
 		{% endif %}

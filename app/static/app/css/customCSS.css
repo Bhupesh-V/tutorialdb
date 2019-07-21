@@ -1,0 +1,9 @@
+a.navbar-item {
+  cursor: pointer;
+  color: white;
+}
+.navbar-menu {
+  background-color: #2B2828;
+  box-shadow: 0 8px 16px rgba(10,10,10,.1);
+  padding: .5rem 0;
+}

@@ -67,3 +67,12 @@ def tags(request):
     context = {'object_list':object_list}
 
     return render(request, 'tags.html', context)
+
+
+def taglinks(request, tagname):
+    taglist = []
+    taglist.append(tagname)
+    object_list = tutorial.objects.filter(tags__name__in = taglist)
+    context = {'object_list':object_list}
+
+    return render(request, 'tagslink.html', context)

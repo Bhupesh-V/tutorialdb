@@ -8,17 +8,8 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-    <style type="text/css">
-        a.navbar-item {
-            cursor: pointer;
-            color: white;
-        }
-      .navbar-menu {
-            background-color: #2B2828;
-            box-shadow: 0 8px 16px rgba(10,10,10,.1);
-            padding: .5rem 0;
-        }
-    </style>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/customCSS.css' %}">
 </head>
 <body>
   <nav class="navbar is-active is-dark" role="navigation" aria-label="main navigation">
@@ -45,6 +36,9 @@
       <a class="navbar-item" href="/latest">
         Latest
       </a>
+      <a class="navbar-item" href="/tags">
+        Tags
+      </a>
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
@@ -69,17 +63,8 @@
   </div>
 </footer>
 <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-<script src="{% static 'app/js/burger.js' %}"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-<script type="text/javascript">
-  function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
-</script>
+<script async src="{% static 'app/js/burger.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.4/randomColor.min.js"></script>
+<script src="{% static 'app/js/colorpad.js' %}"></script>
 </body>
 </html>

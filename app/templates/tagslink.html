@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="section">
+  <div class="container">
+    {% for tutorial in object_list %}
+          <div class="box">
+              <a href="{{ tutorial.link }}" target="_blank">{{ tutorial.title }}</a>
+              <div class="tile">
+                {% for tag in tutorial.tags.all %}
+                <span class="tag">
+                  <b>📌 {{ tag }}</b>
+                </span>&nbsp;
+                {% endfor %}
+              </div>
+          </div>
+    {% endfor %}
+    <a href="/tags">Go Back to Tags</a>
+  </div>
+</div>
+{% endblock %}

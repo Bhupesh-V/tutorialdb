@@ -12,4 +12,5 @@ urlpatterns = [
     path('contribute/', ContributeView.as_view()),
     path('tags/', views.tags, name='tags'),
     path('thankyou/', ContributeView.as_view()),
+    path('tags/tag=<tagname>', views.taglinks),
 ]
