@@ -3,6 +3,11 @@
 {% block content %}
 
 <div class="section">
+  <h2 class="title is-4">Tutorials Tagged 
+    <span class="box tag">
+      #{{ tag }}
+    </span>
+  </h2>
   <div class="container">
     {% for tutorial in object_list %}
           <div class="box">
@@ -16,7 +21,7 @@
               </div>
           </div>
     {% endfor %}
-    <a href="/tags">Go Back to Tags</a>
+    <button class="button" onclick="window.history.back();">❮ Go Back</button>
   </div>
 </div>
 {% endblock %}

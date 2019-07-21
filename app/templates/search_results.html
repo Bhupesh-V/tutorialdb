@@ -13,7 +13,7 @@
           <div class="tile">
             {% for tag in tutorial.tags.all %}
             <span class="tag">
-              <b>📌 {{ tag }}</b>
+              <b><a href="/tags/tag={{ tag }}" style="color: blue;"> 📌 {{ tag }}</a></b>
             </span>&nbsp;
             {% endfor %}
           </div>
