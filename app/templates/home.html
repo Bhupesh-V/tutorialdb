@@ -10,19 +10,20 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script defer src="{% static 'app/js/burger.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/customCSS.css' %}">
 </head>
 <body>
 	<nav class="navbar is-active is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="">
+    <a class="navbar-item" href="/">
       <img src="{% static 'app/tutorialdb.png' %}" width="112" height="28">
     </a>
 
-    <a role="button" class="navbar-burger burger is-dark" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"  style="background-color: white;"></span>
-      <span aria-hidden="true"  style="background-color: white;"></span>
-      <span aria-hidden="true"  style="background-color: white;"></span>
+    <a role="button" class="navbar-burger burger is-dark" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" name="customBurger">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
     </a>
   </div>
 
@@ -58,7 +59,7 @@
       <div class="container">
       <img src="{% static 'app/tutorialdb.png' %}">
     </div>
-    <h1 class="subtitle">A search 🔎 engine for programming/dev tutorials.</h1>
+    <h1 class="subtitle">A search engine for programming/dev tutorials.</h1>
     </center>
   </div>
 </section>
@@ -77,7 +78,7 @@
 
     <section class="section">
       <div class="container">
-        <h1 class="title" align="center">🔍 Search Tutorials</h1>
+        <h1 class="title" align="center">Search Tutorials</h1>
         <center>
         <img src="{% static 'app/search.png' %}" height="100" width="100">
         </center>
@@ -122,11 +123,13 @@
       <strong>tutorialdb</strong> built with 💓 and 🎶 by <a href="https://twitter.com/bhupeshimself">Bhupesh Varshney</a>.<br>
       Illustrations by <a href="https://lukaszadam.com/illustrations">lukaszadam</a>
     </p>
-    <button href="https://www.patreon.com/bePatron?u=18082750" data-patreon-widget-type="become-patron-button">Become a Patron!</button>
+    <button href="https://www.patreon.com/bePatron?u=18082750" data-patreon-widget-type="become-patron-button">Become a Patron!</button><br>
+    <a href=""><img src="{% static 'app/twitter.svg' %}" height="35" width="35"></a>
+  	<a href=""><img src="{% static 'app/fb.svg' %}" height="35" width="35"></a>
+  	<a href=""><img src="{% static 'app/linkedin.svg' %}" height="35" width="35"></a>
   </div>
 </footer>
 <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-<script src="{% static 'app/js/burger.js' %}"></script>
 </body>
 </html>
 

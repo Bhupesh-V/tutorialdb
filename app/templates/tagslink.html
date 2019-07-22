@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
 {% block content %}
 
 <div class="section">
@@ -21,7 +20,12 @@
               </div>
           </div>
     {% endfor %}
-    <button class="button" onclick="window.history.back();">❮ Go Back</button>
+    <div class="field">
+      <button class="button is-pulled-left" onclick="window.history.back();">❮ Go Back</button>
+    </div>
+    <div class="field">
+      <a class="button is-pulled-right" href="/tags">See All Tags</a>
+    </div>
   </div>
 </div>
 {% endblock %}

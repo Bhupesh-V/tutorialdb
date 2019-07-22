@@ -7,3 +7,6 @@ a.navbar-item {
   box-shadow: 0 8px 16px rgba(10,10,10,.1);
   padding: .5rem 0;
 }
+.customBurger{
+	background-color: white;
+}

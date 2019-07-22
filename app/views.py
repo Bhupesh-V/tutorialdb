@@ -52,14 +52,18 @@ class ContributeView(TemplateView):
         linkCount = tutorial.objects.filter(link = request.POST['tlink']).count()
         if linkCount == 0:
             tags, title = generateTags(request.POST['tlink'])
-            tutorialObject = tutorial.objects.create(
-                title = title, 
-                link = request.POST['tlink'], 
-                category = request.POST['tcategory']
-            )
-            tagObjList = tag.objects.filter(name__in = tags)
-            tutorialObject.tags.set(tagObjList)
-        return render(request, 'thankyou.html')
+            if 'other' in tags:
+                pass
+            else:
+                tutorialObject = tutorial.objects.create(
+                    title = title, 
+                    link = request.POST['tlink'], 
+                    category = request.POST['tcategory']
+                )
+                tagObjList = tag.objects.filter(name__in = tags)
+                tutorialObject.tags.set(tagObjList)
+                return render(request, 'thankyou.html')
+        return render(request, 'contribute.html')
 
 
 def tags(request):
