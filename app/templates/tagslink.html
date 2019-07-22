@@ -17,6 +17,8 @@
                   <b>📌 {{ tag }}</b>
                 </span>&nbsp;
                 {% endfor %}
+                <button class="fa fa-share-alt is-pulled-right" id="shareIcon"
+                  onclick='share("{{ tutorial.title }}","{{ tutorial.link }}")'></button>
               </div>
           </div>
     {% endfor %}
