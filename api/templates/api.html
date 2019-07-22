@@ -19,67 +19,69 @@
 	  <div>
 	  	<details>
 	  		<summary class="subtitle">See Docs</summary>
-	  		<table class="table is-hoverable is-fullwidth">
-	  			<th>Request</th>
-	  			<th>Endpoint</th>
-	  			<th>Description</th>
-	  			<tr>
-	  				<td><code>GET</code></td>
-	  				<td><code>/api/tutorials</code></td>
-	  				<td><p>Returns all the tutorials.</p></td>
-	  			</tr>
-	  			<tr>
-	  				<td><code>POST</code></td>
-	  				<td><code>/api/tutorials</code></td>
-	  				<td>
-	  					<p>Submit a tutorial.</p>
-	  					<code>
-	  					{
-	  						"link":"https://abc.xyz",
-	  						"category":"video"
-	  					}
-	  					</code>
-	  				</td>
-	  			</tr>
-	  			<tr>
-	  				<td><code>GET</code></td>
-	  				<td><code>/api/tutorials/{tags}/</code></td>
-	  				<td>
-	  					<p>Returns tutorials filtered by tags.<br>
-	  					   Multiple Tags should be separated with commas,<br>
-	  					   for e.g <code>/api/tutorials/python,api</code>
-	  					</p>
-	  				</td>
-	  			</tr>
-	  			<tr>
-	  				<td><code>GET</code></td>
-	  				<td><code>/api/tutorials/{tags}/{category}/</code></td>
-	  				<td>
-	  					<p>Returns tutorials filtered by tags and category.<br>
-	  						Only one category can be specified at a time for e.g <br>
-	  						<code>/api/tutorials/python,api/video</code> or <br>
-	  						<code>/api/tutorials/react/article</code>
-	  					</p>
-	  					Available Categories : 
-  						<ul>
-  							<li>article</li>
-  							<li>video</li>
-  							<li>docs</li>
-  							<li>course</li>
-  						</ul>
-	  				</td>
-	  			</tr>
-	  			<tr>
-	  				<td><code>GET</code></td>
-	  				<td><code>/api/tags/</code></td>
-	  				<td><p>Returns all the tags.</p></td>
-	  			</tr>
-	  			<tr>
-	  				<td><code>GET</code></td>
-	  				<td><code>/api/latest/</code></td>
-	  				<td><p>Return latest 10 tutorials from tutorialdb.</p></td>
-	  			</tr>
-	  		</table>
+	  		<div class="table-container">
+		  		<table class="table is-hoverable">
+		  			<th>Request</th>
+		  			<th>Endpoint</th>
+		  			<th>Description</th>
+		  			<tr>
+		  				<td><code>GET</code></td>
+		  				<td><code>/api/tutorials</code></td>
+		  				<td><p>Returns all the tutorials.</p></td>
+		  			</tr>
+		  			<tr>
+		  				<td><code>POST</code></td>
+		  				<td><code>/api/tutorials</code></td>
+		  				<td>
+		  					<p>Submit a tutorial.</p>
+		  					<code>
+		  					{
+		  						"link":"https://abc.xyz",
+		  						"category":"video"
+		  					}
+		  					</code>
+		  				</td>
+		  			</tr>
+		  			<tr>
+		  				<td><code>GET</code></td>
+		  				<td><code>/api/tutorials/{tags}/</code></td>
+		  				<td>
+		  					<p>Returns tutorials filtered by tags.<br>
+		  					   Multiple Tags should be separated with commas,<br>
+		  					   for e.g <code>/api/tutorials/python,api</code>
+		  					</p>
+		  				</td>
+		  			</tr>
+		  			<tr>
+		  				<td><code>GET</code></td>
+		  				<td><code>/api/tutorials/{tags}/{category}/</code></td>
+		  				<td>
+		  					<p>Returns tutorials filtered by tags and category.<br>
+		  						Only one category can be specified at a time for e.g <br>
+		  						<code>/api/tutorials/python,api/video</code> or <br>
+		  						<code>/api/tutorials/react/article</code>
+		  					</p>
+		  					Available Categories : 
+	  						<ul>
+	  							<li>article</li>
+	  							<li>video</li>
+	  							<li>docs</li>
+	  							<li>course</li>
+	  						</ul>
+		  				</td>
+		  			</tr>
+		  			<tr>
+		  				<td><code>GET</code></td>
+		  				<td><code>/api/tags/</code></td>
+		  				<td><p>Returns all the tags.</p></td>
+		  			</tr>
+		  			<tr>
+		  				<td><code>GET</code></td>
+		  				<td><code>/api/latest/</code></td>
+		  				<td><p>Return latest 10 tutorials from tutorialdb.</p></td>
+		  			</tr>
+		  		</table>
+	  		</div>
 		</details> 
 	  </div>
 	</div>
