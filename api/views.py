@@ -90,6 +90,9 @@ def tutorials(request):
 						link = request.data['link'], 
 						category = request.data['category']
 					)
+					for t in tags:
+						obj, created = tag.objects.get_or_create(name=t)
+					
 					tagObjList = tag.objects.filter(name__in = tags)
 					tutorialObject.tags.set(tagObjList)
 					return JSONResponse({"message " : "Created, Thanks" }, status=status.HTTP_201_CREATED)

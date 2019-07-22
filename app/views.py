@@ -17,7 +17,7 @@ def latest(request):
     return render(request, 'latest.html', results)
 
 def search_query(request):
-    query = request.GET.get('q')
+    query = request.GET.get('q').lower()
     category = request.GET.get('category')
     list_query = query.split()
 
@@ -60,6 +60,9 @@ class ContributeView(TemplateView):
                     link = request.POST['tlink'], 
                     category = request.POST['tcategory']
                 )
+                for t in tags:
+                    obj, created = tag.objects.get_or_create(name=t)
+
                 tagObjList = tag.objects.filter(name__in = tags)
                 tutorialObject.tags.set(tagObjList)
                 return render(request, 'thankyou.html')
