@@ -11,11 +11,11 @@
       
     {% for tutorial in results %}
     <div class="box">
-        <a href="{{ tutorial.link }}" target="_blank">{{ tutorial.title }}</a>
+        <a href="{{ tutorial.link }}" target="_blank" id="tutorial-tag">{{ tutorial.title }}</a>
         <div class="tile">
         {% for tag in tutorial.tags.all %}
         <span class="tag">
-          <b>📌 {{ tag }}</b>
+          <b><a href="/tags/tag={{ tag }}" > 📌 {{ tag }}</a></b>
         </span>&nbsp;
         {% endfor %}
         <button class="fa fa-share-alt is-pulled-right" id="shareIcon" 

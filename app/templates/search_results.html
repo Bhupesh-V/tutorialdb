@@ -9,7 +9,7 @@
         
       {% for tutorial in object_list %}
       <div class="box">
-          <a href="{{ tutorial.link }}" target="_blank" style="color: blue;">{{ tutorial.title }}</a>
+          <a href="{{ tutorial.link }}" target="_blank" id="tutorial-tag">{{ tutorial.title }}</a>
           <div class="tile">
             {% for tag in tutorial.tags.all %}
             <span class="tag">
