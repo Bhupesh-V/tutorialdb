@@ -24,11 +24,11 @@ def search_query(request):
     if category is not None:
         object_list = tutorial.objects.filter(
             (Q(title__icontains=query) & Q(tags__name__in=list_query)) & Q(category__icontains=category)
-        ).distinct()
+        ).order_by('id').distinct()
     else:
         object_list = tutorial.objects.filter(
             (Q(title__icontains=query) & Q(tags__name__in=list_query))
-        ).distinct()
+        ).order_by('id').distinct()
 
     paginator = Paginator(object_list, 3)
     page = request.GET.get('page')
