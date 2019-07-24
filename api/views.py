@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from rest_framework.renderers import JSONRenderer
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.response import Response
 from rest_framework import status
 from .serializers import tutorialSerializer, tagSerializer, tutorialPOST
 from django.shortcuts import render
@@ -96,4 +95,5 @@ def tutorials(request):
 					tagObjList = tag.objects.filter(name__in = tags)
 					tutorialObject.tags.set(tagObjList)
 					return JSONResponse({"message " : "Created, Thanks" }, status=status.HTTP_201_CREATED)
+			return JSONResponse({"message " : "Created, Thanks" }, status=status.HTTP_201_CREATED)
 		return JSONResponse({"message":"Not Valid, Try Again"}, status=status.HTTP_406_NOT_ACCEPTABLE)

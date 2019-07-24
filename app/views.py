@@ -1,10 +1,7 @@
-from django.views.generic import TemplateView, ListView, FormView
+from django.views.generic import TemplateView
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.db.models import Q
-from django.contrib import messages
 from . models import tag, tutorial
-import re
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggie.parser import generateTags
 
@@ -53,7 +50,7 @@ class ContributeView(TemplateView):
         if linkCount == 0:
             tags, title = generateTags(request.POST['tlink'])
             if 'other' in tags:
-                pass
+                return render(request, 'contribute.html', {'error': "Not a Tutorial Link, Try Again"})
             else:
                 tutorialObject = tutorial.objects.create(
                     title = title, 
@@ -66,7 +63,7 @@ class ContributeView(TemplateView):
                 tagObjList = tag.objects.filter(name__in = tags)
                 tutorialObject.tags.set(tagObjList)
                 return render(request, 'thankyou.html')
-        return render(request, 'contribute.html')
+        return render(request, 'thankyou.html')
 
 
 def tags(request):

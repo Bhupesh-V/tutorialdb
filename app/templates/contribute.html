@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+
 <section class="hero is-medium is-primary is-bold">
   <div class="hero-body">
     <div class="container">
@@ -14,7 +15,7 @@
   </div>
 </section>
 
-<section class="hero is-medium is-success is-bold">
+<section class="hero is-medium is-dark is-bold">
   <div class="hero-body">
     <div class="container">
       <h1 class="title" align="center">Or just,<br>
@@ -27,6 +28,9 @@
 </section>
 <section class="hero is-medium is-primary is-bold">
   <div class="hero-body">
+    {% if error %}
+    <h2 class="title is-3"><i>{{ error }}</i></h2>
+    {% endif %}
     <div class="container">
         <form action="/thankyou/" method="post">
           {% csrf_token %}
