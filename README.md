@@ -40,16 +40,6 @@ python manage.py migrate
 ```bash
 python manage.py runserver
 ```
-> For SECRET_KEY, follow below steps : 
-1. Run `python manage.py shell`
-2. Do 
-```python
->>> from django.core.management.utils import get_random_secret_key
->>> get_random_secret_key()
-'[GENERATED KEY]'
-
-```
-3. Set this key in your Virtual Environment Variables.
 
 
 ## 📝 License
