@@ -37,6 +37,9 @@ def tokenizeTutorial(title, description, generated_tags):
 
     #[generated_tags.append(tag) for elem in generated_tags if elem not in generated_tags]
     generated_tags = ' '.join(generated_tags).split()
+
+    
+
     return list(set(generated_tags))
 
 
@@ -96,5 +99,8 @@ def generateTags(link):
     tutorialTitle, tutorialDescription, temporaryTags = parseTutorial(response)
     tutorialTags = tokenizeTutorial(
         tutorialTitle, tutorialDescription, temporaryTags)
+
+    if 'ci/cd' in tutorialTags:
+        tutorialTags[tutorialTags.index('ci/cd')] = 'ci-cd'
 
     return tutorialTags, tutorialTitle

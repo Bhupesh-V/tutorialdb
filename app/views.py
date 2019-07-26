@@ -20,7 +20,7 @@ def search_query(request):
 
     if category is not None:
         object_list = tutorial.objects.filter(
-            (Q(title__icontains=query) & Q(tags__name__in=list_query)) & Q(category__icontains=category)
+            (Q(title__icontains=query) | Q(tags__name__in=list_query)) & Q(category__icontains=category)
         ).order_by('id').distinct()
     else:
         object_list = tutorial.objects.filter(
