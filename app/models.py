@@ -7,6 +7,8 @@ TUTORIAL_CATEGORIES = (
     ('video', 'video'),
     ('course', 'course'),
     ('docs', 'docs'),
+    ('book', 'book'),
+    ('cheatsheet', 'cheatsheet'),
 )
 
 
