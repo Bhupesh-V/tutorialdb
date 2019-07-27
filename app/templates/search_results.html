@@ -2,9 +2,11 @@
 {% load staticfiles %}
 {% block content %}
 
+<div id="focus-here">
   {% if object_list %}
-    <div class="section" id="focus-here">
+    <div class="section">
       <h3 class="subtitle">Search Results for "{{ tquery }}"</h3>
+      <p>About {{ total }} results ({{ time }} seconds)</p><br>
       <div class="container">
         
       {% for tutorial in object_list %}
@@ -58,5 +60,5 @@
       <img src="{% static 'app/search404.svg' %}" height="160" width="160">
     </h2>
   {% endif %}
-
+</div>
 {% endblock content %}

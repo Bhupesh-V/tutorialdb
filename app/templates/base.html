@@ -7,6 +7,20 @@
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+    <meta name="keywords" content="tutorials, programming, developers">
+    <meta name="description" content="A search engine for programming/dev tutorials">
+    <meta property="og:description" content="A search engine for programming/dev tutorials"/>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@bhupeshimself">
+    <meta name="twitter:title" content="tutorialdb">
+    <meta name="twitter:description" content="A search engine for programming/dev tutorials">
+    <meta name="author" content="Bhupesh Varshney" />
+    <meta property="og:title" content="tutorialdb" />
+    <meta property="twitter:title" content="tutorialdb" />
+    <meta property="og:image" content="{% static 'app/tutorialdb.png' %}"/>
+    <meta name="twitter:image" content="{% static 'app/tutorialdb.png' %}">
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'app/tutorialdb.png' %}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script defer src="{% static 'app/js/burger.js' %}"></script>
@@ -37,6 +51,9 @@
           </a>
           <a class="navbar-item" href="/tags">
             Tags
+          </a>
+          <a class="navbar-item" href="/about">
+            About
           </a>
         </div>
         <div class="navbar-end">

@@ -4,6 +4,7 @@ from django.db.models import Q
 from . models import tag, tutorial
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggie.parser import generateTags
+import time
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
@@ -13,10 +14,17 @@ def latest(request):
     results = { 'results': results }
     return render(request, 'latest.html', results)
 
+
+def about(request):
+    return render(request, 'about.html')
+
+
 def search_query(request):
     query = request.GET.get('q').lower()
     category = request.GET.get('category')
     list_query = query.split()
+
+    start_time = time.time()
 
     if category is not None:
         object_list = tutorial.objects.filter(
@@ -26,6 +34,9 @@ def search_query(request):
         object_list = tutorial.objects.filter(
             (Q(title__icontains=query) & Q(tags__name__in=list_query))
         ).order_by('id').distinct()
+    end_time = time.time()
+    total = len(object_list)
+    result_time = round(end_time - start_time, 3)
 
     paginator = Paginator(object_list, 3)
     page = request.GET.get('page')
@@ -36,7 +47,7 @@ def search_query(request):
     except EmptyPage:
         object_list = paginator.page(paginator.num_pages)
 
-    context = {'tquery':query, 'object_list':object_list}
+    context = {'tquery':query, 'object_list':object_list, 'total': total, 'time': result_time}
 
     return render(request, 'search_results.html', context)
 
