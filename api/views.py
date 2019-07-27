@@ -1,11 +1,13 @@
 from django.http import HttpResponse
 from rest_framework.renderers import JSONRenderer
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.views import APIView
 from rest_framework import status
 from .serializers import tutorialSerializer, tagSerializer, tutorialPOST
 from django.shortcuts import render
 from app.models import tutorial, tag
 from taggie.parser import generateTags
+from rest_framework.pagination import PageNumberPagination
 
  
 # Just wraps a simple HTTP Response to a JSON Response
@@ -26,19 +28,24 @@ def tutorial_Tags(request, tags):
 	"""
 	Return tutorials with a {tag}
 	"""
+	paginator = PageNumberPagination()
 	tags = tags.split(',')
-	customTutorials = tutorial.objects.filter(tags__name__in = tags).distinct()
-	serializer = tutorialSerializer(customTutorials, many=True)
-	return JSONResponse(serializer.data)
+	customTutorials = tutorial.objects.filter(tags__name__in = tags).order_by('id').distinct()
+	context = paginator.paginate_queryset(customTutorials, request)
+	serializer = tutorialSerializer(context, many=True)
+	return paginator.get_paginated_response(serializer.data)
+
 
 @api_view(['GET'])
 def latest(request):
 	"""
 	Return latest 10 tutorials from tutorialdb
 	"""
+	paginator = PageNumberPagination()
 	results = tutorial.objects.all().order_by('-created_date')[:10]
-	serializer = tutorialSerializer(results, many=True)
-	return JSONResponse(serializer.data)
+	context = paginator.paginate_queryset(results, request)
+	serializer = tutorialSerializer(context, many=True)
+	return paginator.get_paginated_response(serializer.data)
 
 
 @api_view(['GET'])
@@ -46,35 +53,41 @@ def tutorial_Tags_Category(request, tags, category):
 	"""
 	Return tutorials with a {tag} and {category}
 	"""
+	paginator = PageNumberPagination()
 	tags = tags.split(',')
 	category = category.split(',')
-	customTutorials = tutorial.objects.filter(tags__name__in = tags, category__in = category).distinct()
-	serializer = tutorialSerializer(customTutorials, many=True)
-	return JSONResponse(serializer.data)
+	customTutorials = tutorial.objects.filter(tags__name__in = tags, category__in = category).order_by('id').distinct()
+	context = paginator.paginate_queryset(customTutorials, request)
+	serializer = tutorialSerializer(context, many=True)
+	return paginator.get_paginated_response(serializer.data)
 
 
 @api_view(['GET'])
 def tags(request):
 	"""
-	Returns all tags
+	Return all tags
 
 	"""
-	tags = tag.objects.all()
-	serializer = tagSerializer(tags, many=True)
-	return JSONResponse(serializer.data)
+	paginator = PageNumberPagination()
+	tags = tag.objects.all().order_by('id')
+	context = paginator.paginate_queryset(tags, request)
+	serializer = tagSerializer(context, many=True)
+	return paginator.get_paginated_response(serializer.data)
 
 
 @api_view(['GET', 'POST'])
 def tutorials(request):
 	"""
-	get: Returns all tutorials
+	get: Return all tutorials
 
-	post: POST a tutorial
+	post: submit a tutorial
 	"""
 	if request.method == 'GET':
-		tutorials = tutorial.objects.all()
-		serializer = tutorialSerializer(tutorials, many=True)
-		return JSONResponse(serializer.data)
+		paginator = PageNumberPagination()
+		tutorials = tutorial.objects.all().order_by('id')
+		context = paginator.paginate_queryset(tutorials, request)
+		serializer = tutorialSerializer(context, many=True)
+		return paginator.get_paginated_response(serializer.data)
 	elif request.method == 'POST':
 		postserializer = tutorialPOST(data = request.data)
 		if postserializer.is_valid():
