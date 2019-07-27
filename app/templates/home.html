@@ -105,7 +105,7 @@
             </div>
           </div>
           <div class="control">
-            <button class="button is-primary is-rounded" type="submit">Submit</button>
+            <button class="button is-primary is-rounded" onclick='focusMe()' type="submit">Submit</button>
           </div>
         </form>
       </div>
@@ -126,31 +126,11 @@
       </div>
     </footer>
     <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <script async src="{% static 'app/js/custom.js' %}"></script>
     <script type="text/javascript">
       window.onload = function() {
         registerSW();
       };
-      async function registerSW(){
-        if('serviceWorker' in navigator) {
-          try{
-              await navigator.serviceWorker.register("{% static 'app/js/sw.js' %}");
-          } catch(e) {
-            console.log('SW Registration Failed.');
-          }
-        }
-      }
-    </script>
-    <script type="text/javascript">
-      function share(title, link){
-        if (navigator.share) {
-          navigator.share({
-          title: title,
-          url: link,
-          })
-          .then(() => console.log('Successful Share'))
-          .catch((error) => console.log('Error sharing', error));
-        }
-      }
     </script>
   </body>
 </html>
