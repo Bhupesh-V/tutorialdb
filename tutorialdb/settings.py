@@ -5,9 +5,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','192.168.42.2']
+ALLOWED_HOSTS = ['127.0.0.1','192.168.42.2','tutorialdb.pythonanywhere.com']
 
 
 # Application definition

@@ -16,18 +16,18 @@
 	    "kotlin", "elixir", "agile", "kubernetes",
 	    "mongodb", "ux", "flutter", "haskell",
 	    "cloud", "database", "wordpress",
-	    "blockchain", "c", "webdev",
+	    "blockchain", "c", "webdev", "arduino",
 	    "web", "framework", "library", "app",
 	    "crud", "drupal", "security", "js",
 	    "nuxt.js", "next.js", "vue.js", "react.js",
 	    "api", "rest", "portfolio", "prototyping",
-	    "monorepo", "chrome", "firefox",
+	    "monorepo", "chrome", "firefox", "unreal",
 	    "http", "https", "cors", "statistics",
-	    "gatsby", "rss", "responsive",
+	    "gatsby", "rss", "responsive", "jira",
 	    "c#", "style", "clojure", "pytorch",
 	    "tensorflow", "numpy", "pandas", "opencv",
 	    "keras", "mlpack", "r", "ai",
-	    "ml.net", ".net", "objective-c",
+	    "ml.net", ".net", "objective-c", "testing",
 	    "asp", "asp.net", "vb", "vb.net",
 	    "shell", "ecmascript", "erlang", "gnu",
 	    "octave", "terminal", "cmd", "scala",
@@ -51,6 +51,7 @@
 	    "pyspark", "sqlalchemy", "multiprocessing", "multithreading",
 	    "opengl", "resume", "software", "iot",
 	    "nlp", "d3.js", "redis", "debugging",
-	    "networking", "tcp/ip", "interview", "productivity"
+	    "networking", "tcp/ip", "interview", "productivity",
+	    "alexa"
 	]
 }
