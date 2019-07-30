@@ -9,8 +9,11 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','192.168.42.2','tutorialdb.pythonanywhere.com']
-
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    os.environ['LOCAL_HOST'], # your local IP to test the site on your network,
+    'tutorialdb.pythonanywhere.com',
+    ]
 
 # Application definition
 
@@ -70,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tutorialdb.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -80,7 +82,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -100,11 +101,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-IN'
 
 TIME_ZONE = 'Asia/Kolkata'
 
@@ -113,7 +113,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ( os.path.join('static'), )
