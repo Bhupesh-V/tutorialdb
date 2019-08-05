@@ -54,9 +54,9 @@ pip install -r requirements.txt
 	>>> get_random_secret_key()
 	'[GENERATED KEY]'
 	```
-	3. Create a file named only `.env` in the same directory as `manage.py` and put the `[GENERATED_KEY]` as your `SECRET_KEY`.
+	3. Create a file named only `.env` in the same directory as `settings.py` and put the `[GENERATED_KEY]` as your `SECRET_KEY`.
 	4. You may also put your local machine's IP address as the `LOCAL_HOST` in the `.env` file.
-	5. Uncomment the appropriate variables in the `manage.py` file.
+	5. Uncomment the appropriate variables in the `settings.py` file.
 
 	__Note:__ Put both the virtual environment variables as strings (ie within quotes).
 
