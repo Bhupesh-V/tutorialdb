@@ -21,12 +21,12 @@ Follow the steps below while submitting a PR.
 
 1. Create your own branch (never commit to master).
 2. Setup the development environment by following the [Installation](README.md#installation-) instructions.
-4. Run the development server.
+3. Run the development server.
 
 ```bash
 python manage.py runserver
 ```
 
-5. Make your changes.
-6. Push your changes to your branch.
-7. Create a Pull Request against the master branch.
+4. Make your changes.
+5. Push your changes to your branch.
+6. Create a Pull Request against the master branch.
