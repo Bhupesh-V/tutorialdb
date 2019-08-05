@@ -5,6 +5,7 @@
 The following is a set of guidelines for contributing to tutorialdb. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 ## Table of Contents
+
 1. [Getting Started](#getting-started)
 2. [Submitting Pull Requests](#submitting-pull-requests)
 
@@ -27,4 +28,5 @@ python manage.py runserver
 ```
 
 5. Make your changes.
-6. Push your changes to the main branch.
+6. Push your changes to your branch.
+7. Create a Pull Request against the master branch.

@@ -8,9 +8,6 @@
 
 1. [About the Project](#about-the-project)
 2. [Installation](#installation-)
-3. [License](#-license)
-4. [Author](#author)
-5. [Contributing](#-contributing)
 
 # About the Project
 
