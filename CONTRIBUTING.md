@@ -6,7 +6,7 @@ The following is a set of guidelines for contributing to tutorialdb. These are m
 
 ## Table of Contents
 1. [Getting Started](#getting-started)
-2. [Submitting Pull Request](#submitting-pull-request)
+2. [Submitting Pull Requests](#submitting-pull-requests)
 
 # Getting Started
 
@@ -14,7 +14,7 @@ The following is a set of guidelines for contributing to tutorialdb. These are m
 - You can use an appropriate label to label the issue.
 - Feel free while asking doubts, just open an [issue](https://github.com/Bhupesh-V/tutorialdb/issues/new).
 
-# Submitting Pull Request
+# Submitting Pull Requests
 
 Follow the steps below while submitting a PR.
 
@@ -26,5 +26,5 @@ Follow the steps below while submitting a PR.
 python manage.py runserver
 ```
 
-5. Make your changes
+5. Make your changes.
 6. Push your changes to the main branch.

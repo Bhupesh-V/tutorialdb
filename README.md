@@ -45,7 +45,7 @@ git clone https://github.com/Bhupesh-V/tutorialdb.git
 pip install -r requirements.txt
 ```
 
-4. Set-up virtual environment variables
+4. Set-up virtual environment variables.
 
 	1. Run `python manage.py shell`
 	2. Do 
