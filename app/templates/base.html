@@ -19,17 +19,17 @@
     <meta property="twitter:title" content="tutorialdb" />
     <meta property="og:image" content="{% static 'app/tutorialdb.png' %}"/>
     <meta name="twitter:image" content="{% static 'app/tutorialdb.png' %}">
-
     <link rel="shortcut icon" type="image/png" href="{% static 'app/tutorialdb.png' %}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/customCSS.css' %}">
+    <link rel="manifest" href="{% static 'app/manifest.json' %}"/>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script defer src="{% static 'app/js/burger.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'app/css/customCSS.css' %}">
   </head>
   <body>
     <nav class="navbar is-active is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">
+        <a class="navbar-item" href="{% url 'app:home' %}">
           <img src="{% static 'app/tutorialdb.png' %}" width="112" height="28">
         </a>
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" name="customBurger">
@@ -40,26 +40,26 @@
       </div>
       <div id="navbarBasicExample" class="navbar-menu is-dark" >
         <div class="navbar-start is-dark">
-          <a class="navbar-item" href="/">
+          <a class="navbar-item" href="{% url 'app:home' %}">
             Home
           </a>
-          <a class="navbar-item" href="/api">
+          <a class="navbar-item" href="{% url 'api-home' %}">
             API
           </a>
-          <a class="navbar-item" href="/latest">
+          <a class="navbar-item" href="{% url 'app:latest' %}">
             Latest
           </a>
-          <a class="navbar-item" href="/tags">
+          <a class="navbar-item" href="{% url 'app:tags' %}">
             Tags
           </a>
-          <a class="navbar-item" href="/about">
+          <a class="navbar-item" href="{% url 'app:about' %}">
             About
           </a>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary" href="/contribute">
+              <a class="button is-primary" href="{% url 'app:contribute' %}">
                 <strong>Contribute</strong>
               </a>
             </div>
@@ -67,8 +67,7 @@
         </div>
       </div>
     </nav>
-    {% block content %}
-    {% endblock content %}
+    {% block content %}{% endblock content %}
     <footer class="footer">
       <div class="content has-text-centered">
         <p>

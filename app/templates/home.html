@@ -1,74 +1,7 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>tutorialdb</title>
-    <meta charset="utf-8" />
-    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <link rel="shortcut icon" type="image/png" href="{% static 'app/tutorialdb.png' %}"/>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
-    <meta name="keywords" content="tutorials, programming, developers">
-    <meta name="description" content="A search engine for programming/dev tutorials">
-    <meta property="og:description" content="A search engine for programming/dev tutorials"/>
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:creator" content="@bhupeshimself">
-    <meta name="twitter:title" content="tutorialdb">
-    <meta name="twitter:description" content="A search engine for programming/dev tutorials">
-    <meta name="author" content="Bhupesh Varshney" />
-    <meta property="og:title" content="tutorialdb" />
-    <meta property="twitter:title" content="tutorialdb" />
-    <meta property="og:image" content="{% static 'app/tutorialdb.png' %}"/>
-    <meta name="twitter:image" content="{% static 'app/tutorialdb.png' %}">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script defer src="{% static 'app/js/burger.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'app/css/customCSS.css' %}">
-    <link rel="manifest" href="{% static 'app/manifest.json' %}"/>
-  </head>
-  <body>
-    <nav class="navbar is-active is-dark" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          <img src="{% static 'app/tutorialdb.png' %}" width="112" height="28">
-        </a>
-        <a role="button" class="navbar-burger burger is-dark" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" name="customBurger">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div id="navbarBasicExample" class="navbar-menu is-dark" >
-        <div class="navbar-start is-dark">
-          <a class="navbar-item" href="/">
-            Home
-          </a>
-          <a class="navbar-item" href="/api">
-            API
-          </a>
-          <a class="navbar-item" href="/latest">
-            Latest
-          </a>
-          <a class="navbar-item" href="/tags">
-            Tags
-          </a>
-          <a class="navbar-item" href="/about">
-            About
-          </a>
-        </div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary" href="/contribute">
-                <strong>Contribute</strong>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <section class="hero is-medium is-dark is-bold">
+{% block content %}
+<section class="hero is-medium is-dark is-bold">
       <div class="hero-body" style="background-color: #04243B">
         <center>
         <div class="container">
@@ -97,7 +30,7 @@
         <img src="{% static 'app/search.png' %}" height="100" width="100">
         </center>
         <br>
-        <form action="{% url 'search_results' %}" method="get">
+        <form action="{% url 'app:search-results' %}" method="get">
           <div class="field">
             <div class="control has-icons-left">
               <input class="input is-rounded" name="q" type="text" placeholder="to do app in ..">
@@ -130,32 +63,6 @@
         </form>
       </div>
     </section>
-    {% block content %}
-    {% endblock %}
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p>
-          <strong>tutorialdb</strong> built with 💓 and 🎶 by <a href="https://twitter.com/bhupeshimself">Bhupesh Varshney</a>.<br>
-          Illustrations by <a href="https://lukaszadam.com/illustrations">lukaszadam</a>
-        </p>
-        <center>
-          <a href="https://www.patreon.com/bePatron?u=18082750">
-            <img src="{% static 'app/patreon.png' %}"  height="140" width="140">
-          </a>
-        </center>
-        <br>
-        <a href="https://twitter.com/intent/tweet?url=https://tutorialdb.pythonanywhere.com&text=Hey Guys 😃 ! Try tutorialdb, it's a search engine for programming/dev tutorials."><img src="{% static 'app/twitter.svg' %}" height="35" width="35"></a>
-        <a href="https://github.com/Bhupesh-V/tutorialdb"><img src="{% static 'app/github.svg' %}" height="35" width="35"></a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://tutorialdb.pythonanywhere.com"><img src="{% static 'app/fb.svg' %}" height="35" width="35"></a>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://tutorialdb.pythonanywhere.com"><img src="{% static 'app/linkedin.svg' %}" height="35" width="35"></a>
-      </div>
-    </footer>
-    
-    <script async src="{% static 'app/js/custom.js' %}"></script>
-    <script type="text/javascript">
-      window.onload = function() {
-        registerSW();
-      };
-    </script>
-  </body>
-</html>
+    {% block results %}
+    {% endblock results %}
+{% endblock content %}

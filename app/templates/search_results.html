@@ -1,21 +1,19 @@
 {% extends 'home.html' %}
 {% load staticfiles %}
-{% block content %}
-
+{% block results %}
 <div id="focus-here">
   {% if object_list %}
     <div class="section">
       <h3 class="subtitle">Search Results for "{{ tquery }}"</h3>
       <p>About {{ total }} results ({{ time }} seconds)</p><br>
       <div class="container">
-        
       {% for tutorial in object_list %}
       <div class="box">
           <a href="{{ tutorial.link }}" target="_blank" id="tutorial-tag">{{ tutorial.title }}</a>
           <div class="tile">
             {% for tag in tutorial.tags.all %}
             <span class="tag">
-              <b><a href="/tags/tag={{ tag }}" > 📌 {{ tag }}</a></b>
+              <b><a href="{% url 'app:tag-links' tag %}" > 📌 {{ tag }}</a></b>
             </span>&nbsp;
             {% endfor %}
             <button class="fa fa-share-alt is-pulled-right" id="shareIcon" 
@@ -25,7 +23,6 @@
       {% endfor %}    
       </div>
     </div>
-
   <div class="section">
     <div class="container">
       {% if object_list.has_other_pages %}
@@ -53,7 +50,6 @@
       {% endif %}
     </div>
   </div>
-
   {% else %}
     <h2 class="subtitle notification is-primary title is-3" align="center">
       Ah! Sorry, No Results<br>
@@ -61,4 +57,4 @@
     </h2>
   {% endif %}
 </div>
-{% endblock content %}
+{% endblock results %}

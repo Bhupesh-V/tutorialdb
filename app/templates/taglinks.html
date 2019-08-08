@@ -15,7 +15,7 @@
               <div class="tile">
                 {% for tag in tutorial.tags.all %}
                 <span class="tag">
-                  <b><a href="/tags/tag={{ tag }}" > 📌 {{ tag }}</a></b>
+                  <b><a href="{% url 'app:tag-links' tag %}" > 📌 {{ tag }}</a></b>
                 </span>&nbsp;
                 {% endfor %}
                 <button class="fa fa-share-alt is-pulled-right" id="shareIcon"
@@ -27,7 +27,7 @@
       <button class="button is-pulled-left" onclick="window.history.back();">❮ Go Back</button>
     </div>
     <div class="field">
-      <a class="button is-pulled-right" href="/tags">See All Tags</a>
+      <a class="button is-pulled-right" href="{% url 'app:tags' %}">See All Tags</a>
     </div>
   </div>
 </div>
@@ -37,5 +37,4 @@
     <img src="{% static 'app/search404.svg' %}" height="160" width="160">
   </h2>
 {% endif %}
-
 {% endblock %}
