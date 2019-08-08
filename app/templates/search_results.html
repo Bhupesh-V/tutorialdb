@@ -2,59 +2,59 @@
 {% load staticfiles %}
 {% block results %}
 <div id="focus-here">
-  {% if object_list %}
-    <div class="section">
-      <h3 class="subtitle">Search Results for "{{ tquery }}"</h3>
-      <p>About {{ total }} results ({{ time }} seconds)</p><br>
-      <div class="container">
-      {% for tutorial in object_list %}
-      <div class="box">
-          <a href="{{ tutorial.link }}" target="_blank" id="tutorial-tag">{{ tutorial.title }}</a>
-          <div class="tile">
-            {% for tag in tutorial.tags.all %}
-            <span class="tag">
-              <b><a href="{% url 'app:tag-links' tag %}" > 📌 {{ tag }}</a></b>
-            </span>&nbsp;
-            {% endfor %}
-            <button class="fa fa-share-alt is-pulled-right" id="shareIcon" 
-            onclick='share("{{ tutorial.title }}","{{ tutorial.link }}")'></button>
-          </div>
-      </div>
-      {% endfor %}    
-      </div>
-    </div>
+{% if object_list %}
   <div class="section">
+    <h3 class="subtitle">Search Results for "{{ tquery }}"</h3>
+    <p>About {{ total }} results ({{ time }} seconds)</p><br>
     <div class="container">
-      {% if object_list.has_other_pages %}
-        <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
-          {% if object_list.has_previous %}
-            <a class="pagination-previous" href="?page={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">Previous</a>
-            {% else %}
-            <a class="pagination-previous" href="#!" title="This is the first page" disabled >Previous</a>
-          {% endif %}
-          {% if object_list.has_next %}
-              <a href="?page={{ object_list.next_page_number }}{% if request.GET.q %}&q={{request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category}}{% endif %}" class="pagination-next">Next page</a>
-          {% else %}
-              <a class="pagination-next" href="#!" disabled >Next</a>
-          {% endif %}
-          <ul class="pagination-list">
-            {% for num in object_list.paginator.page_range %}
-                {% if object_list.number == num %}
-                    <li><a class="pagination-link" href="#!">{{ num }}</a></li>
-                {% else %}
-                    <li><a class="pagination-link" href="?page={{ num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}" >{{ num }}</a></li>
-                {% endif %}
-            {% endfor %}
-          </ul>
-        </nav>
-      {% endif %}
+    {% for tutorial in object_list %}
+      <div class="box">
+        <a href="{{ tutorial.link }}" target="_blank" id="tutorial-tag">{{ tutorial.title }}</a>
+        <div class="tile">
+        {% for tag in tutorial.tags.all %}
+          <span class="tag">
+            <b><a href="{% url 'app:tag-links' tag %}" > 📌 {{ tag }}</a></b>
+          </span>&nbsp;
+        {% endfor %}
+          <button class="fa fa-share-alt is-pulled-right" id="shareIcon" 
+          onclick='share("{{ tutorial.title }}","{{ tutorial.link }}")'></button>
+        </div>
+      </div>
+    {% endfor %}    
     </div>
   </div>
-  {% else %}
-    <h2 class="subtitle notification is-primary title is-3" align="center">
-      Ah! Sorry, No Results<br>
-      <img src="{% static 'app/search404.svg' %}" height="160" width="160">
-    </h2>
-  {% endif %}
+  <div class="section">
+    <div class="container">
+    {% if object_list.has_other_pages %}
+      <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+      {% if object_list.has_previous %}
+        <a class="pagination-previous" href="?page={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">Previous</a>
+      {% else %}
+        <a class="pagination-previous" href="#!" title="This is the first page" disabled >Previous</a>
+      {% endif %}
+      {% if object_list.has_next %}
+        <a href="?page={{ object_list.next_page_number }}{% if request.GET.q %}&q={{request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category}}{% endif %}" class="pagination-next">Next page</a>
+      {% else %}
+        <a class="pagination-next" href="#!" disabled >Next</a>
+      {% endif %}
+        <ul class="pagination-list">
+        {% for num in object_list.paginator.page_range %}
+          {% if object_list.number == num %}
+          <li><a class="pagination-link" href="#!">{{ num }}</a></li>
+          {% else %}
+          <li><a class="pagination-link" href="?page={{ num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}" >{{ num }}</a></li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+    </div>
+  </div>
+{% else %}
+  <h2 class="subtitle notification is-primary title is-3" align="center">
+    Ah! Sorry, No Results<br>
+    <img src="{% static 'app/search404.svg' %}" height="160" width="160">
+  </h2>
+{% endif %}
 </div>
 {% endblock results %}

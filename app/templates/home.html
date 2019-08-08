@@ -2,17 +2,17 @@
 {% load staticfiles %}
 {% block content %}
 <section class="hero is-medium is-dark is-bold">
-      <div class="hero-body" style="background-color: #04243B">
-        <center>
-        <div class="container">
-          <img src="{% static 'app/tutorialdb.png' %}">
-        </div>
-        <h1 class="subtitle">A search engine for programming/dev tutorials.</h1>
-        <img src="{% static 'app/computer.svg' %}" height="100" width="100">
-        </center>
-      </div>
-    </section>
+  <div class="hero-body" style="background-color: #04243B">
     <center>
+      <div class="container">
+        <img src="{% static 'app/tutorialdb.png' %}">
+      </div>
+      <h1 class="subtitle">A search engine for programming/dev tutorials.</h1>
+      <img src="{% static 'app/computer.svg' %}" height="100" width="100">
+    </center>
+  </div>
+</section>
+<center>
     <section class="hero is-medium is-success is-bold">
       <div class="hero-body" style="background-color: orange">
         <div class="container">
@@ -22,47 +22,46 @@
         </div>
       </div>
     </section>
+</center>
+<section class="section">
+  <div class="container">
+    <h1 class="title" align="center">Search Tutorials</h1>
+    <center>
+      <img src="{% static 'app/search.png' %}" height="100" width="100">
     </center>
-    <section class="section">
-      <div class="container">
-        <h1 class="title" align="center">Search Tutorials</h1>
-        <center>
-        <img src="{% static 'app/search.png' %}" height="100" width="100">
-        </center>
-        <br>
-        <form action="{% url 'app:search-results' %}" method="get">
-          <div class="field">
-            <div class="control has-icons-left">
-              <input class="input is-rounded" name="q" type="text" placeholder="to do app in ..">
-              <span class="icon is-small is-left">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </span>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Filter</label>
-            <div class="field is-grouped">
-              <div class="control">
-                <div class="select is-rounded">
-                  <select name = "category">
-                    <option disabled selected value>select category</option>
-                    <option value ="video">Videos</option>
-                    <option value ="article">Articles</option>
-                    <option value ="course">Courses</option>
-                    <option value ="docs">Docs</option>
-                    <option value ="book">Books</option>
-                    <option value ="cheatsheet">Cheatsheet</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="control">
-            <button class="button is-primary is-rounded" onclick='focusMe()' type="submit">Submit</button>
-          </div>
-        </form>
+    <br>
+    <form action="{% url 'app:search-results' %}" method="get">
+      <div class="field">
+        <div class="control has-icons-left">
+          <input class="input is-rounded" name="q" type="text" placeholder="to do app in ..">
+          <span class="icon is-small is-left">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </span>
+        </div>
       </div>
-    </section>
-    {% block results %}
-    {% endblock results %}
+      <div class="field">
+        <label class="label">Filter</label>
+        <div class="field is-grouped">
+          <div class="control">
+            <div class="select is-rounded">
+              <select name = "category">
+                <option disabled selected value>select category</option>
+                <option value ="video">Videos</option>
+                <option value ="article">Articles</option>
+                <option value ="course">Courses</option>
+                <option value ="docs">Docs</option>
+                <option value ="book">Books</option>
+                <option value ="cheatsheet">Cheatsheet</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="control">
+        <button class="button is-primary is-rounded" onclick='focusMe()' type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</section>
+{% block results %}{% endblock results %}
 {% endblock content %}
