@@ -75,7 +75,7 @@ class ContributeView(TemplateView):
 		"""
 		GET the contribution form.
 		"""
-		return render(request, 'contribute.html')
+		return render(request, 'contribute.html', {'title': 'Contribute'})
 	
 	def post(self, request):
 		"""
@@ -97,8 +97,8 @@ class ContributeView(TemplateView):
 
 				tagObjList = tag.objects.filter(name__in = tags)
 				tutorialObject.tags.set(tagObjList)
-				return render(request, 'thankyou.html')
-		return render(request, 'thankyou.html')
+				return render(request, 'thankyou.html', {'title': 'Thanks'})
+		return render(request, 'thankyou.html', {'title': 'Thanks'})
 
 def tags(request):
 	"""

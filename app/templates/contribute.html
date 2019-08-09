@@ -30,7 +30,7 @@
     <h2 class="title is-3"><i>{{ error }}</i></h2>
     {% endif %}
     <div class="container">
-      <form action="{% url 'app:thankyou' %}" method="post">
+      <form action="{% url 'app:contribute' %}" method="post">
       {% csrf_token %}
         <div class="field">
           <label class="label">Link</label>
