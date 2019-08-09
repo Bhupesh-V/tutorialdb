@@ -12,15 +12,15 @@ from rest_framework.pagination import PageNumberPagination
  
 # Just wraps a simple HTTP Response to a JSON Response
 class JSONResponse(HttpResponse):
-    def __init__(self, data, **kwargs):
-        content = JSONRenderer().render(data)
-        kwargs['content_type'] = 'application/json'
-        super(JSONResponse, self).__init__(content, **kwargs)
+	def __init__(self, data, **kwargs):
+		content = JSONRenderer().render(data)
+		kwargs['content_type'] = 'application/json'
+		super(JSONResponse, self).__init__(content, **kwargs)
 
 
 @api_view(['GET'])
 def index(request):
-    return render(request, 'api.html')
+	return render(request, 'api.html', {'title': 'API'})
 
 
 @api_view(['GET'])
@@ -66,7 +66,6 @@ def tutorial_Tags_Category(request, tags, category):
 def tags(request):
 	"""
 	Return all tags
-
 	"""
 	paginator = PageNumberPagination()
 	tags = tag.objects.all().order_by('id')
@@ -79,7 +78,6 @@ def tags(request):
 def tutorials(request):
 	"""
 	get: Return all tutorials
-
 	post: submit a tutorial
 	"""
 	if request.method == 'GET':
