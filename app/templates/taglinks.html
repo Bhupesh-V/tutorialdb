@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+{% if object_list %}
+<div class="section">
+  <h2 class="title is-4">Tutorials Tagged 
+    <span class="box tag">
+      #{{ tag }}
+    </span>
+  </h2>
+  <div class="container">
+  {% for tutorial in object_list %}
+    <div class="box">
+        <a href="{{ tutorial.link }}" target="_blank" id="tutorial-tag">{{ tutorial.title }}</a>
+        <div class="tile">
+          {% for tag in tutorial.tags.all %}
+          <span class="tag">
+            <b><a href="{% url 'app:tag-links' tag %}" > 📌 {{ tag }}</a></b>
+          </span>&nbsp;
+          {% endfor %}
+          <button class="fa fa-share-alt is-pulled-right" id="shareIcon"
+            onclick='share("{{ tutorial.title }}","{{ tutorial.link }}")'></button>
+        </div>
+    </div>
+  {% endfor %}
+    <div class="field">
+      <button class="button is-pulled-left" onclick="window.history.back();">❮ Go Back</button>
+    </div>
+    <div class="field">
+      <a class="button is-pulled-right" href="{% url 'app:tags' %}">See All Tags</a>
+    </div>
+  </div>
+</div>
+{% else %}
+<h2 class="subtitle notification is-primary title is-3" align="center">
+  Ah! Sorry, No Results<br>
+  <img src="{% static 'app/search404.svg' %}" height="160" width="160">
+</h2>
+{% endif %}
+{% endblock %}

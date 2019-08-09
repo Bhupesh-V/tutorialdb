@@ -1,33 +1,30 @@
 {% extends 'base.html'%}
 {% load staticfiles %}
-
 {% block content %}
-
-  {% if results %}
-  <div class="section">
-    <h3 class="title">Latest in tutorialdb </h3>
-    <div class="container">
-      
+{% if results %}
+<div class="section">
+  <h3 class="title">Latest in tutorialdb </h3>
+  <div class="container">
     {% for tutorial in results %}
     <div class="box">
-        <a href="{{ tutorial.link }}" target="_blank" id="tutorial-tag">{{ tutorial.title }}</a>
-        <div class="tile">
-        {% for tag in tutorial.tags.all %}
+      <a href="{{ tutorial.link }}" target="_blank" id="tutorial-tag">{{ tutorial.title }}</a>
+      <div class="tile">
+      {% for tag in tutorial.tags.all %}
         <span class="tag">
-          <b><a href="/tags/tag={{ tag }}" > 📌 {{ tag }}</a></b>
+          <b><a href="{% url 'app:tag-links' tag %}" > 📌 {{ tag }}</a></b>
         </span>&nbsp;
-        {% endfor %}
+      {% endfor %}
         <button class="fa fa-share-alt is-pulled-right" id="shareIcon" 
-        onclick='share("{{ tutorial.title }}","{{ tutorial.link }}")'></button>
-        </div>
-        </div>
-    {% endfor %}    
+    onclick='share("{{ tutorial.title }}","{{ tutorial.link }}")'></button>
+      </div>
     </div>
+    {% endfor %}    
   </div>
-  {% else %}
-  <h2 class="subtitle notification is-primary" align="center">
-  <img src="{% static 'app/search404.svg' %}" height="100" width="100">
-    <br> Ah! Sorry, No Results 🙀
-  </h2>
-  {% endif %}
+</div>
+{% else %}
+<h2 class="subtitle notification is-primary" align="center">
+<img src="{% static 'app/search404.svg' %}" height="100" width="100">
+<br> Ah! Sorry, No Results 🙀
+</h2>
+{% endif %}
 {% endblock %}

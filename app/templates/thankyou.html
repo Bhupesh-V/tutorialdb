@@ -2,25 +2,24 @@
 {% load staticfiles %}
 {% block content %}
 <center>
-<section class="hero is-medium is-primary is-bold">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Thanks<br>
-        <img src="{% static 'app/emoji1.png' %}" height="50" width="50">
-      </h1>
-      <img src="{% static 'app/guy.svg' %}" width="" height="">
-  	</div>
-  	<div class="container">
-	<div class="field">
-      <a href="/contribute" class="button is-pulled-left is-link is-rounded">Submit More</a>
+  <section class="hero is-medium is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Thanks<br>
+          <img src="{% static 'app/emoji1.png' %}" height="50" width="50">
+        </h1>
+        <img src="{% static 'app/guy.svg' %}" width="" height="">
+    	</div>
+    	<div class="container">
+  	    <div class="field">
+          <a href="{% url 'app:contribute' %}" class="button is-pulled-left is-link is-rounded">Submit More</a>
+        </div>
+        <div class="field">
+          <a href="{% url 'app:home' %}" class="button is-pulled-right is-link is-rounded">Search Tutorials</a>
+        </div>
+      </div>
     </div>
-    <div class="field">
-      <a href="/" class="button is-pulled-right is-link is-rounded">Search Tutorials</a>
-    </div>
-    </div>
-</div>
-  </div>
-</section>
+  </section>
 </center>
 {% endblock %}

@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-
 <section class="hero is-medium is-primary is-bold">
   <div class="hero-body">
     <div class="container">
@@ -14,7 +13,6 @@
     </div>
   </div>
 </section>
-
 <section class="hero is-medium is-dark is-bold">
   <div class="hero-body">
     <div class="container">
@@ -32,40 +30,36 @@
     <h2 class="title is-3"><i>{{ error }}</i></h2>
     {% endif %}
     <div class="container">
-        <form action="/thankyou/" method="post">
-          {% csrf_token %}
-              <div class="field">
-                <label class="label">Link</label>
-                <div class="control">
-                  <input class="input is-rounded" type="url" name="tlink" placeholder="paste tutorial link here" autofocus>
-                </div>
-            </div>
-
-          <div class="field">
-            <label class="label">Type</label>
-            <div class="control">
-              <div class="select is-rounded">
-                <select name="tcategory">
-                    <option value ="video">Video</option>
-                    <option value ="article">Article</option>
-                    <option value ="course">Course</option>
-                    <option value ="docs">Docs</option>
-                    <option value ="book">Books</option>
-                    <option value ="cheatsheet">Cheatsheet</option>
-                </select>
-              </div>
+      <form action="{% url 'app:thankyou' %}" method="post">
+      {% csrf_token %}
+        <div class="field">
+          <label class="label">Link</label>
+          <div class="control">
+            <input class="input is-rounded" type="url" name="tlink" placeholder="paste tutorial link here" autofocus>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Type</label>
+          <div class="control">
+            <div class="select is-rounded">
+              <select name="tcategory">
+                <option value ="video">Video</option>
+                <option value ="article">Article</option>
+                <option value ="course">Course</option>
+                <option value ="docs">Docs</option>
+                <option value ="book">Books</option>
+                <option value ="cheatsheet">Cheatsheet</option>
+              </select>
             </div>
           </div>
-
-          <div class="field is-grouped">
-            <div class="control">
-              <button class="button is-link is-rounded" type="submit">Submit</button>
-            </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link is-rounded" type="submit">Submit</button>
           </div>
-        </form>
+        </div>
+      </form>
     </div>
   </div>
 </section>
-
 {% endblock content %}
-
