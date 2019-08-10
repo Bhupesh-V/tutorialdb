@@ -16,8 +16,8 @@ def latest(request):
 	"""
 	View for the latest tutorial entries.
 	"""
-	results = tutorial.objects.all().order_by('-id')[:10]
-	context = {'results': results, 'title': 'Latest'}
+	tutorials = tutorial.objects.all().order_by('-id')[:10]
+	context = {'tutorials': tutorials, 'title': 'Latest'}
 	return render(request, 'latest.html', context)
 
 def about(request):
@@ -37,29 +37,29 @@ def search_query(request):
 	start_time = time.time()
 
 	if category is not None:
-		object_list = tutorial.objects.filter(
+		tutorials = tutorial.objects.filter(
 			(Q(title__icontains=query) | Q(tags__name__in=list_query)) & Q(category__icontains=category)
 		).order_by('id').distinct()
 	else:
-		object_list = tutorial.objects.filter(
+		tutorials = tutorial.objects.filter(
 			(Q(title__icontains=query) & Q(tags__name__in=list_query))
 		).order_by('id').distinct()
 	end_time = time.time()
-	total = len(object_list)
+	total = len(tutorials)
 	result_time = round(end_time - start_time, 3)
 
-	paginator = Paginator(object_list, 3)
+	paginator = Paginator(tutorials, 3)
 	page = request.GET.get('page')
 	try:
-		object_list = paginator.page(page)
+		tutorials = paginator.page(page)
 	except PageNotAnInteger:
-		object_list = paginator.page(1)
+		tutorials = paginator.page(1)
 	except EmptyPage:
-		object_list = paginator.page(paginator.num_pages)
+		tutorials = paginator.page(paginator.num_pages)
 
 	context = {
-		'tquery':query, 
-		'object_list':object_list, 
+		'query':query, 
+		'tutorials':tutorials, 
 		'total': total, 
 		'time': result_time, 
 		'title': query
@@ -104,8 +104,8 @@ def tags(request):
 	"""
 	View for the tags.
 	"""
-	object_list = tag.objects.all()
-	context = {'object_list':object_list, 'title': 'Tags'}
+	tags = tag.objects.all()
+	context = {'tags':tags, 'title': 'Tags'}
 	return render(request, 'tags.html', context)
 
 def taglinks(request, tagname):
@@ -114,6 +114,6 @@ def taglinks(request, tagname):
 	"""
 	taglist = []
 	taglist.append(tagname)
-	object_list = tutorial.objects.filter(tags__name__in = taglist)
-	context = {'tag': tagname, 'object_list':object_list, 'title': tagname}
+	tutorials = tutorial.objects.filter(tags__name__in = taglist)
+	context = {'tag': tagname, 'tutorials':tutorials, 'title': tagname}
 	return render(request, 'taglinks.html', context)
