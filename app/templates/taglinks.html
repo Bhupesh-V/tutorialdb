@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load staticfiles %}
-{% if object_list %}
+{% if tutorials %}
 <div class="section">
   <h2 class="title is-4">Tutorials Tagged 
     <span class="box tag">
@@ -9,7 +9,7 @@
     </span>
   </h2>
   <div class="container">
-  {% for tutorial in object_list %}
+  {% for tutorial in tutorials %}
     <div class="box">
         <a href="{{ tutorial.link }}" target="_blank" id="tutorial-tag">{{ tutorial.title }}</a>
         <div class="tile">

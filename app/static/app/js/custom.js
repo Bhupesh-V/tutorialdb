@@ -1,3 +1,4 @@
+{% load static %}
 
 setTimeout(function focusMe(){
   document.getElementById("focus-here").scrollIntoView();
