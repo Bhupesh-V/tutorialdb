@@ -28,7 +28,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/customCSS.css' %}">
     <link rel="manifest" href="{% static 'app/manifest.json' %}"/>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script defer src="{% static 'app/js/SW.js' %}"></script>
     <script defer src="{% static 'app/js/burger.js' %}"></script>
   </head>
   <body>
@@ -98,6 +97,17 @@
       window.onload = function() {
         registerSW();
       };
+    </script>
+    <script type="text/javascript">
+      async function registerSW(){
+        if('serviceWorker' in navigator) {
+          try{
+              await navigator.serviceWorker.register("{% static 'app/js/SW.js' %}");
+          } catch(e) {
+            console.log('SW Registration Failed.');
+          }
+        }
+      }
     </script>
   </body>
 </html>
