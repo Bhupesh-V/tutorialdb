@@ -1,0 +1,27 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Animesh-Ghosh",
+      "name": "MaDDogx",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/34956994?v=4",
+      "profile": "https://github.com/Animesh-Ghosh",
+      "contributions": [
+        "code",
+        "bug",
+        "ideas",
+        "review",
+        "userTesting"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "tutorialdb",
+  "projectOwner": "Bhupesh-V",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
