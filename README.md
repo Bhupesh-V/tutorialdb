@@ -1,8 +1,8 @@
 # tutorialdb
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 > A search engine for programming/dev tutorials.
 
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![CodeFactor](https://www.codefactor.io/repository/github/bhupesh-v/tutorialdb/badge)](https://www.codefactor.io/repository/github/bhupesh-v/tutorialdb)
 
 ## Table of Contents
@@ -10,14 +10,15 @@
 1. [About the Project](#about-the-project)
 2. [Installation](#installation-)
 
-# About the Project
+
+### About the Project
 
 - **tutorialdb** is a small scale search engine for programming/dev tutorials, it is meant to help anyone who is getting started to learn a new technology.
 - The sole purpose of tutorialdb is to help people get to resoures which might help them learn new things for e.g sometimes there are tutorials on personal blogs which do not get indexed by Google easily.
 - All the content (tutorials) is owned by the respective authors/sites.
 - tutorialdb maintains its own database saving the links to tutorials and some meta info.
 
-# Installation 🔮
+### Installation 🔮
 
 1. Create virtual environment.
 
@@ -70,20 +71,14 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-# 📝 License
+## 📝 License
 
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE) file for details.
 
-# Author
-
-👥 **Bhupesh Varshney**
-
-- Twitter: [@bhupeshimself](https://twitter.com/bhupeshimself)
-- Github: [@Bhupesh-V](https://github.com/Bhupesh-V)
-
-# 👋 Contributing
+## 👋 Contributing
 
 Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file for the process of submitting pull requests to us.
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):

@@ -9,13 +9,13 @@ The following is a set of guidelines for contributing to tutorialdb. These are m
 1. [Getting Started](#getting-started)
 2. [Submitting Pull Requests](#submitting-pull-requests)
 
-# Getting Started
+### Getting Started
 
 - Make sure you communicate using GitHub issues while submitting a PR or reporting bugs.
 - You can use an appropriate label to label the issue.
 - Feel free while asking doubts, just open an [issue](https://github.com/Bhupesh-V/tutorialdb/issues/new).
 
-# Submitting Pull Requests
+### Submitting Pull Requests
 
 Follow the steps below while submitting a PR.
 
