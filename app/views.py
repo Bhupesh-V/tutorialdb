@@ -42,7 +42,7 @@ def search_query(request):
 		).order_by('id').distinct()
 	else:
 		tutorials = tutorial.objects.filter(
-			(Q(title__icontains=query) & Q(tags__name__in=list_query))
+			(Q(title__icontains=query) | Q(tags__name__in=list_query))
 		).order_by('id').distinct()
 	end_time = time.time()
 	total = len(tutorials)
