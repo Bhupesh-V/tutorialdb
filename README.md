@@ -2,6 +2,7 @@
 
 > A search engine for programming/dev tutorials.
 
+![GitHub release](https://img.shields.io/github/release/Bhupesh-V/tutorialdb)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![CodeFactor](https://www.codefactor.io/repository/github/bhupesh-v/tutorialdb/badge)](https://www.codefactor.io/repository/github/bhupesh-v/tutorialdb)
 
