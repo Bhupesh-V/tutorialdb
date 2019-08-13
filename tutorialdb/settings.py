@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 	'app',
 	'api',
 	'taggie',
+	'import_export',
 ]
 
 REST_FRAMEWORK = {
