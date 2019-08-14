@@ -3,6 +3,8 @@
 > A search engine for programming/dev tutorials.
 
 ![GitHub release](https://img.shields.io/github/release/Bhupesh-V/tutorialdb)
+[![GitHub license](https://img.shields.io/github/license/Bhupesh-V/tutorialdb)](https://github.com/Bhupesh-V/tutorialdb/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/Bhupesh-V/tutorialdb)](https://github.com/Bhupesh-V/tutorialdb/issues)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/af7df141776744a49435a876c7b87834)](https://app.codacy.com/app/Bhupesh-V/tutorialdb?utm_source=github.com&utm_medium=referral&utm_content=Bhupesh-V/tutorialdb&utm_campaign=Badge_Grade_Dashboard)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![CodeFactor](https://www.codefactor.io/repository/github/bhupesh-v/tutorialdb/badge)](https://www.codefactor.io/repository/github/bhupesh-v/tutorialdb)
@@ -13,7 +15,7 @@
 2. [Installation](#installation-)
 
 
-### About the Project
+### About the Project 🔘
 
 - **tutorialdb** is a small scale search engine for programming/dev tutorials, it is meant to help anyone who is getting started to learn a new technology.
 - The sole purpose of tutorialdb is to help people get to resoures which might help them learn new things for e.g sometimes there are tutorials on personal blogs which do not get indexed by Google easily.
@@ -67,7 +69,7 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-5. Run the development server.
+6. Run the development server.
 
 ```bash
 python manage.py runserver
@@ -79,9 +81,9 @@ This project is licensed under the MIT License. See the [LICENSE.md](LICENSE) fi
 
 ## 👋 Contributing
 
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file for the process of submitting pull requests to us.
+Please read the [CONTRIBUTING](CONTRIBUTING.md) file for the process of submitting pull requests to us.
 
-## Contributors ✨
+## ✨ Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
