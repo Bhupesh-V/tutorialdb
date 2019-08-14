@@ -11,7 +11,6 @@ TUTORIAL_CATEGORIES = (
     ('cheatsheet', 'cheatsheet'),
 )
 
-
 class tag(models.Model):
 	name = models.CharField(max_length=100)
 	created_date = models.DateTimeField(default=timezone.now)
@@ -19,7 +18,6 @@ class tag(models.Model):
 	
 	def __str__(self):
 		return self.name
-
 
 class tutorial(models.Model):
 	title = models.CharField(max_length=200)
@@ -30,4 +28,3 @@ class tutorial(models.Model):
 
 	def __str__(self):
 		return self.title
-		

@@ -9,7 +9,6 @@ from app.models import tutorial, tag
 from taggie.parser import generateTags
 from rest_framework.pagination import PageNumberPagination
 
- 
 # Just wraps a simple HTTP Response to a JSON Response
 class JSONResponse(HttpResponse):
 	def __init__(self, data, **kwargs):
@@ -17,11 +16,9 @@ class JSONResponse(HttpResponse):
 		kwargs['content_type'] = 'application/json'
 		super(JSONResponse, self).__init__(content, **kwargs)
 
-
 @api_view(['GET'])
 def index(request):
 	return render(request, 'api.html', {'title': 'API'})
-
 
 @api_view(['GET'])
 def tutorial_Tags(request, tags):
@@ -35,7 +32,6 @@ def tutorial_Tags(request, tags):
 	serializer = tutorialSerializer(context, many=True)
 	return paginator.get_paginated_response(serializer.data)
 
-
 @api_view(['GET'])
 def latest(request):
 	"""
@@ -46,7 +42,6 @@ def latest(request):
 	context = paginator.paginate_queryset(results, request)
 	serializer = tutorialSerializer(context, many=True)
 	return paginator.get_paginated_response(serializer.data)
-
 
 @api_view(['GET'])
 def tutorial_Tags_Category(request, tags, category):
@@ -61,7 +56,6 @@ def tutorial_Tags_Category(request, tags, category):
 	serializer = tutorialSerializer(context, many=True)
 	return paginator.get_paginated_response(serializer.data)
 
-
 @api_view(['GET'])
 def tags(request):
 	"""
@@ -72,7 +66,6 @@ def tags(request):
 	context = paginator.paginate_queryset(tags, request)
 	serializer = tagSerializer(context, many=True)
 	return paginator.get_paginated_response(serializer.data)
-
 
 @api_view(['GET', 'POST'])
 def tutorials(request):

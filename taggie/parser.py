@@ -6,7 +6,6 @@ import json
 import os
 from django.conf import settings
 
-
 tagLocation = os.path.join(settings.BASE_DIR, 'taggie/tags.json')
 
 def validTag(tag):
@@ -15,13 +14,11 @@ def validTag(tag):
     if tag in data['tags']: return True
     else: return False
 
-
 def totalTags():
     with open(tagLocation) as json_file:
         data = json.load(json_file)
 
     return f'{len(data["tags"])}'
-
 
 def tokenizeTutorial(title, description, generated_tags):
     pattern = re.compile(r'\W+^[\+.]')
@@ -38,10 +35,7 @@ def tokenizeTutorial(title, description, generated_tags):
     #[generated_tags.append(tag) for elem in generated_tags if elem not in generated_tags]
     generated_tags = ' '.join(generated_tags).split()
 
-    
-
     return list(set(generated_tags))
-
 
 def parseTutorial(res):
     temporaryTags = []
@@ -92,7 +86,6 @@ def getTutorial(link):
         raise Exception(e)
     except requests.exceptions.ConnectionError as e:
         raise Exception(e)
-
 
 def generateTags(link):
     response = getTutorial(link)

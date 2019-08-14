@@ -1,10 +1,10 @@
-from django.views.generic import TemplateView
 from django.shortcuts import render
+from django.views.generic import TemplateView
+from .models import tag, tutorial
+import time
 from django.db.models import Q
-from . models import tag, tutorial
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggie.parser import generateTags
-import time
 
 class HomePageView(TemplateView):
 	"""

@@ -1,6 +1,5 @@
-from django.urls import path
-from .views import HomePageView,ContributeView
-from django.conf.urls import include
+from django.urls import path, include
+from .views import HomePageView, ContributeView
 from . import views
 
 app_name = 'app'
@@ -13,5 +12,5 @@ urlpatterns = [
     path('tags/', views.tags, name='tags'),
     path('thankyou/', ContributeView.as_view(), name='thankyou'),
     path('about', views.about, name='about'),
-    path('tags/tag=<tagname>', views.taglinks, name='tag-links'),
+    path('tags/tag=<str:tagname>', views.taglinks, name='tag-links'),
 ]
