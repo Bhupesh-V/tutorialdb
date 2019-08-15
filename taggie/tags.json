@@ -52,6 +52,9 @@
 	    "opengl", "resume", "software", "iot",
 	    "nlp", "d3.js", "redis", "debugging",
 	    "networking", "tcp/ip", "interview", "productivity",
-	    "alexa"
+	    "alexa", "visualbasic", "solidity", "rubyonrails",
+	    "node.js", "jquery", "electron", "postgressql",
+	    "bootstrap", "flask", "mysql", "seo",
+	    "react-native", "elasticsearch", "cryptocurrency", "ui"
 	]
 }
