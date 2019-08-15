@@ -17,7 +17,7 @@ class tutorial(models.Model):
 	DOCS = 'docs'
 	VIDEO = 'video'
 
-	TUTORIAL_CATEGORIES = (
+	CATEGORIES = (
 		(ARTICLE, 'Article'),
 		(BOOK, 'Book'),
 		(CHEATSHEET, 'Cheatsheet'),
@@ -29,7 +29,7 @@ class tutorial(models.Model):
 	title = models.CharField(max_length=200)
 	link = models.URLField()
 	tags = models.ManyToManyField(tag)
-	category = models.CharField(max_length=20, choices=TUTORIAL_CATEGORIES, default=ARTICLE)
+	category = models.CharField(max_length=20, choices=CATEGORIES)
 	created_date = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):

@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import tag, tutorial
-import time
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggie.parser import generateTags
+import time
 
 class HomePageView(TemplateView):
 	"""
@@ -12,12 +12,20 @@ class HomePageView(TemplateView):
 	"""
 	template_name = 'home.html'
 
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context['categories'] = tutorial.CATEGORIES
+		return context
+
 def latest(request):
 	"""
 	View for the latest tutorial entries.
 	"""
 	tutorials = tutorial.objects.all().order_by('-id')[:10]
-	context = {'tutorials': tutorials, 'title': 'Latest'}
+	context = {
+		'tutorials': tutorials, 
+		'title': 'Latest'
+	}
 	return render(request, 'latest.html', context)
 
 def about(request):
@@ -38,7 +46,8 @@ def search_query(request):
 
 	if category is not None:
 		tutorials = tutorial.objects.filter(
-			(Q(title__icontains=query) | Q(tags__name__in=list_query)) & Q(category__icontains=category)
+			(Q(title__icontains=query) | Q(tags__name__in=list_query)) 
+			& Q(category__icontains=category)
 		).order_by('id').distinct()
 	else:
 		tutorials = tutorial.objects.filter(
@@ -75,7 +84,11 @@ class ContributeView(TemplateView):
 		"""
 		GET the contribution form.
 		"""
-		return render(request, 'contribute.html', {'title': 'Contribute'})
+		context = {
+			'title': 'Contribute', 
+			'categories': tutorial.CATEGORIES
+		}
+		return render(request, 'contribute.html', context)
 	
 	def post(self, request):
 		"""
@@ -85,7 +98,11 @@ class ContributeView(TemplateView):
 		if linkCount == 0:
 			tags, title = generateTags(request.POST['tlink'])
 			if 'other' in tags:
-				return render(request, 'contribute.html', {'error': "Not a Tutorial Link, Try Again"})
+				return render(
+					request, 
+					'contribute.html', 
+					{'error': "Not a Tutorial Link, Try Again"}
+				)
 			else:
 				tutorialObject = tutorial.objects.create(
 					title = title, 
@@ -105,7 +122,10 @@ def tags(request):
 	View for the tags.
 	"""
 	tags = tag.objects.all()
-	context = {'tags':tags, 'title': 'Tags'}
+	context = {
+		'tags':tags, 
+		'title': 'Tags'
+	}
 	return render(request, 'tags.html', context)
 
 def taglinks(request, tagname):
@@ -115,5 +135,9 @@ def taglinks(request, tagname):
 	taglist = []
 	taglist.append(tagname)
 	tutorials = tutorial.objects.filter(tags__name__in = taglist)
-	context = {'tag': tagname, 'tutorials':tutorials, 'title': tagname}
+	context = {
+		'tag': tagname, 
+		'tutorials':tutorials, 
+		'title': tagname
+	}
 	return render(request, 'taglinks.html', context)

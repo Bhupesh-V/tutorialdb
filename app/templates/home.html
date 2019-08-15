@@ -33,7 +33,7 @@
     <form action="{% url 'app:search-results' %}" method="get">
       <div class="field">
         <div class="control has-icons-left">
-          <input class="input is-rounded" name="q" type="text" placeholder="to do app in ..">
+          <input class="input is-rounded" name="q" type="text" placeholder="search tutorials...">
           <span class="icon is-small is-left">
             <i class="fa fa-search" aria-hidden="true"></i>
           </span>
@@ -44,14 +44,11 @@
         <div class="field is-grouped">
           <div class="control">
             <div class="select is-rounded">
-              <select name = "category">
-                <option disabled selected value>select category</option>
-                <option value ="video">Videos</option>
-                <option value ="article">Articles</option>
-                <option value ="course">Courses</option>
-                <option value ="docs">Docs</option>
-                <option value ="book">Books</option>
-                <option value ="cheatsheet">Cheatsheet</option>
+              <select name="category">
+                <option disabled selected value="">Select Category</option>
+                {% for category_value, category_name in categories %}
+                <option value="{{ category_value }}">{{ category_name }}</option>
+                {% endfor %}
               </select>
             </div>
           </div>
