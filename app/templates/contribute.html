@@ -35,7 +35,7 @@
         <div class="field">
           <label class="label">Link</label>
           <div class="control">
-            <input class="input is-rounded" type="url" name="tlink" placeholder="paste tutorial link here" autofocus>
+            <input class="input is-rounded" type="url" name="tlink" placeholder="paste tutorial link here..." autofocus>
           </div>
         </div>
         <div class="field">
@@ -43,12 +43,10 @@
           <div class="control">
             <div class="select is-rounded">
               <select name="tcategory">
-                <option value ="video">Video</option>
-                <option value ="article">Article</option>
-                <option value ="course">Course</option>
-                <option value ="docs">Docs</option>
-                <option value ="book">Books</option>
-                <option value ="cheatsheet">Cheatsheet</option>
+                <option disabled selected value="">Select Category</option>
+                {% for category_value, category_name in categories %}
+                <option value="{{ category_value }}">{{ category_name }}</option>
+                {% endfor %}
               </select>
             </div>
           </div>
