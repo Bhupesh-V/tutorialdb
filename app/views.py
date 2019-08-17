@@ -71,7 +71,8 @@ def search_query(request):
 		'tutorials':tutorials, 
 		'total': total, 
 		'time': result_time, 
-		'title': query
+		'title': query,
+		'categories': tutorial.CATEGORIES
 	}
 
 	return render(request, 'search_results.html', context)
