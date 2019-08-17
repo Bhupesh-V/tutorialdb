@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from .models import tag, tutorial
 from django.db.models import Q
@@ -115,8 +115,8 @@ class ContributeView(TemplateView):
 
 				tagObjList = tag.objects.filter(name__in = tags)
 				tutorialObject.tags.set(tagObjList)
-				return render(request, 'thankyou.html', {'title': 'Thanks'})
-		return render(request, 'thankyou.html', {'title': 'Thanks'})
+				return redirect('app:thankyou')
+		return redirect('app:thankyou')
 
 def tags(request):
 	"""
@@ -142,3 +142,6 @@ def taglinks(request, tagname):
 		'title': tagname
 	}
 	return render(request, 'taglinks.html', context)
+
+def thanks(request):
+	return render(request, 'thankyou.html', {'title': 'Thanks'})
