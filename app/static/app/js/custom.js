@@ -12,3 +12,12 @@ function share(title, link){
     .catch((error) => console.log('Error sharing', error));
   }
 }
+function manage(txt){
+	var bt = document.getElementById('submit-button');
+    if (txt.value != '') {
+        bt.disabled = false;
+    }
+    else {
+        bt.disabled = true;
+    }
+}

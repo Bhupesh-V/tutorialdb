@@ -33,7 +33,7 @@
     <form action="{% url 'app:search-results' %}" method="get">
       <div class="field">
         <div class="control has-icons-left">
-          <input class="input is-rounded" name="q" type="text" placeholder="search tutorials...">
+          <input class="input is-rounded" name="q" type="text" placeholder="search tutorials..." id="txt" onkeyup="manage(this)">
           <span class="icon is-small is-left">
             <i class="fa fa-search" aria-hidden="true"></i>
           </span>
@@ -55,7 +55,7 @@
         </div>
       </div>
       <div class="control">
-        <button class="button is-primary is-rounded" onclick='focusMe()' type="submit">Submit</button>
+        <button class="button is-primary is-rounded" id="submit-button" onclick='focusMe()' type="submit" disabled>Submit</button>
       </div>
     </form>
   </div>
