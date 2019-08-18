@@ -27,9 +27,10 @@
 <section class="hero is-medium is-primary is-bold">
   <div class="hero-body">
     {% if error %}
-    <h2 class="title is-3"><i>{{ error }}</i></h2>
+    <span class="tag is-danger is-large"><b>{{ error }}</b></span>
     {% endif %}
     <div class="container">
+      <br><br>
       <form action="{% url 'app:contribute' %}" method="post">
       {% csrf_token %}
         <div class="field">
