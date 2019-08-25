@@ -115,8 +115,8 @@ class ContributeView(TemplateView):
 
 				tagObjList = tag.objects.filter(name__in = tags)
 				tutorialObject.tags.set(tagObjList)
-				return redirect('app:thankyou')
-		return redirect('app:thankyou')
+				return render(request, 'thankyou.html', {'title': 'Thanks!'})
+		return render(request, 'thankyou.html', {'title': 'Thanks!'})
 
 def tags(request):
 	"""
@@ -142,6 +142,3 @@ def taglinks(request, tagname):
 		'title': tagname
 	}
 	return render(request, 'taglinks.html', context)
-
-def thanks(request):
-	return render(request, 'thankyou.html', {'title': 'Thanks'})
