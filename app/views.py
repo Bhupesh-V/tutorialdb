@@ -115,6 +115,8 @@ class ContributeView(TemplateView):
 
 				tagObjList = tag.objects.filter(name__in = tags)
 				tutorialObject.tags.set(tagObjList)
+		# thankyou.html shouldn't be accessible unless someone successfully posts
+		# a tutorial
 				return render(request, 'thankyou.html', {'title': 'Thanks!'})
 		return render(request, 'thankyou.html', {'title': 'Thanks!'})
 
