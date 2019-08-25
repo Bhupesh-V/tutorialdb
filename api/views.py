@@ -1,12 +1,12 @@
+from app.models import Tag, Tutorial
 from django.http import HttpResponse
 from django.shortcuts import render
-from rest_framework.renderers import JSONRenderer
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.pagination import PageNumberPagination
-from rest_framework import status
-from app.models import Tutorial, Tag
+from rest_framework.renderers import JSONRenderer
 from taggie.parser import generate_tags
-from .serializers import TutorialSerializer, TutorialPOST, TagSerializer
+from .serializers import TagSerializer, TutorialPOST, TutorialSerializer
 
 @api_view(['GET'])
 def index(request):

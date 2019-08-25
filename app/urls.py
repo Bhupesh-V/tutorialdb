@@ -1,7 +1,7 @@
-from django.urls import path
 from django.conf.urls import include
-from .views import HomePageView, ContributeView
+from django.urls import path
 from . import views
+from .views import ContributeView, HomePageView
 
 app_name = 'app'
 urlpatterns = [

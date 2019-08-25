@@ -1,4 +1,4 @@
-from import_export import resources, fields
+from import_export import fields, resources
 from import_export.widgets import ManyToManyWidget
 from . models import Tutorial, Tag
 

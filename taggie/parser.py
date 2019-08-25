@@ -2,6 +2,7 @@ import re
 import json
 import os
 import requests
+
 from bs4 import BeautifulSoup as bs
 from django.conf import settings
 

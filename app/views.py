@@ -1,10 +1,11 @@
 import time
-from django.views.generic import TemplateView
+
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.shortcuts import render
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import TemplateView
 from taggie.parser import generate_tags
-from .models import Tutorial, Tag
+from .models import Tag, Tutorial
 
 class HomePageView(TemplateView):
     template_name = 'home.html'

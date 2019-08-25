@@ -1,5 +1,11 @@
+from app.models import Tag, Tutorial
 from rest_framework import serializers
-from app.models import Tutorial, Tag
+
+class TagSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Tag
+        fields = ('__all__')
 
 class TutorialSerializer(serializers.ModelSerializer):
     tags = serializers.SlugRelatedField(
@@ -18,9 +24,3 @@ class TutorialPOST(serializers.Serializer):
     class Meta:
         model = Tutorial
         fields = ('link', 'category')
-
-class TagSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Tag
-        fields = ('__all__')
