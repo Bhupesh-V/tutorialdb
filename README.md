@@ -63,13 +63,19 @@ pip install -r requirements.txt
 
 	__Note:__ Put both the virtual environment variables as strings (ie within quotes).
 
-4. Migrate tables.
+5. Migrate tables.
 
 ```bash
 python manage.py migrate
 ```
 
-6. Run the development server.
+6. Run Tests.
+
+```bash
+python manage.py test
+```
+
+7. Run the development server.
 
 ```bash
 python manage.py runserver
