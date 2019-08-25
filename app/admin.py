@@ -1,13 +1,12 @@
 from django.contrib import admin
-from . models import tutorial, tag
 from import_export.admin import ImportExportModelAdmin
-from  . resources import TagResource, TutorialResource
+from .models import Tutorial, Tag
+from  .resources import TutorialResource, TagResource
 
-
-@admin.register(tutorial)
+@admin.register(Tutorial)
 class TutorialAdmin(ImportExportModelAdmin):
-	resource_class = TutorialResource
+    resource_class = TutorialResource
 
-@admin.register(tag)
+@admin.register(Tag)
 class TagAdmin(ImportExportModelAdmin):
-	resource_class = TagResource
+    resource_class = TagResource
