@@ -103,7 +103,12 @@ class ContributeView(TemplateView):
 
     def get(self, request):
         """GET the contribution form"""
-        self.context.popitem()
+        try:
+            if 'error' in self.context.keys():
+                self.context.popitem()
+        except KeyError:
+            pass
+
         return render(request, 'contribute.html', self.context)
 
     def post(self, request):
