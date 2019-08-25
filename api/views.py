@@ -23,8 +23,8 @@ class JSONResponse(HttpResponse):
 @api_view(['GET', 'POST'])
 def tutorials(request):
     """
-    get: Return all Tutorials
-    post: submit a Tutorial
+    get: Return all tutorials
+    post: submit a tutorial
     """
     if request.method == 'GET':
         paginator = PageNumberPagination()
@@ -63,7 +63,7 @@ def tutorials(request):
 
 @api_view(['GET'])
 def tutorial_tag(request, tags):
-    """returns Tutorials with a {Tag}"""
+    """returns tutorials with {tags}"""
     paginator = PageNumberPagination()
     tags = tags.split(',')
     custom_tutorial = Tutorial.objects.filter(tags__name__in=tags).order_by('id').distinct()
@@ -73,7 +73,7 @@ def tutorial_tag(request, tags):
 
 @api_view(['GET'])
 def tutorial_tag_category(request, tags, category):
-    """return Tutorials with a {Tag} and {category}"""
+    """return tutorials with {tags} and a {category}"""
     paginator = PageNumberPagination()
     tags = tags.split(',')
     category = category.split(',')
@@ -93,7 +93,7 @@ def tags(request):
 
 @api_view(['GET'])
 def latest(request):
-    """returns latest 10 Tutorials from Tutorialdb"""
+    """returns latest 10 tutorials from tutorialdb"""
     paginator = PageNumberPagination()
     results = Tutorial.objects.all().order_by('-created_date')[:10]
     context = paginator.paginate_queryset(results, request)

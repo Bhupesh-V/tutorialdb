@@ -7,7 +7,6 @@ from taggie.parser import generate_tags
 from .models import Tutorial, Tag
 
 class HomePageView(TemplateView):
-    """home page view"""
     template_name = 'home.html'
     context = {}
 
@@ -18,9 +17,7 @@ class HomePageView(TemplateView):
         return self.context
 
 def search_query(request):
-    """
-    view for the search results.
-    """
+    """view for the search results"""
     query = request.GET.get('q').lower()
     category = request.GET.get('category')
     list_query = query.split()

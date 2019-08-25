@@ -2,7 +2,6 @@ from rest_framework import serializers
 from app.models import Tutorial, Tag
 
 class TutorialSerializer(serializers.ModelSerializer):
-    """serializes tutorials"""
     tags = serializers.SlugRelatedField(
         many=True,
         read_only=True,
@@ -21,7 +20,6 @@ class TutorialPOST(serializers.Serializer):
         fields = ('link', 'category')
 
 class TagSerializer(serializers.ModelSerializer):
-    """serializes tags"""
 
     class Meta:
         model = Tag
