@@ -14,7 +14,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     # os.environ['LOCAL_HOST'], # your local IP to test the site on your network,
     'tutorialdb.pythonanywhere.com',
-    ]
+]
 
 # Application definition
 

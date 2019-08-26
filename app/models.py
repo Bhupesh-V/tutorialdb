@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+
 class Tag(models.Model):
     """tags have a name, creation date and maybe description"""
     name = models.CharField(max_length=100)
@@ -9,6 +10,7 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Tutorial(models.Model):
     """tutorials have a title, a URL, a set of tags, a category and creation date"""

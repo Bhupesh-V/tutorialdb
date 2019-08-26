@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 from taggie.parser import generate_tags
 from .models import Tag, Tutorial
 
+
 class HomePageView(TemplateView):
     template_name = 'home.html'
     context = {}
@@ -16,6 +17,7 @@ class HomePageView(TemplateView):
         self.context = super().get_context_data(**kwargs)
         self.context['categories'] = Tutorial.CATEGORIES
         return self.context
+
 
 def search_query(request):
     """view for the search results"""
@@ -48,8 +50,8 @@ def search_query(request):
         tutorials = paginator.page(paginator.num_pages)
 
     context = {
-        'query':query,
-        'tutorials':tutorials,
+        'query': query,
+        'tutorials': tutorials,
         'total': total,
         'time': result_time,
         'title': query,
@@ -57,6 +59,7 @@ def search_query(request):
     }
 
     return render(request, 'search_results.html', context)
+
 
 def latest(request):
     """view for the latest tutorial entries"""
@@ -67,6 +70,7 @@ def latest(request):
     }
     return render(request, 'latest.html', context)
 
+
 def tags(request):
     """view for the tags"""
     tags = Tag.objects.all()
@@ -76,21 +80,24 @@ def tags(request):
     }
     return render(request, 'tags.html', context)
 
+
 def taglinks(request, tagname):
     """view for the tutorials with the {tagname}"""
     taglist = []
     taglist.append(tagname)
-    tutorials = Tutorial.objects.filter(tags__name__in = taglist)
+    tutorials = Tutorial.objects.filter(tags__name__in=taglist)
     context = {
         'tag': tagname,
-        'tutorials':tutorials,
+        'tutorials': tutorials,
         'title': tagname
     }
     return render(request, 'taglinks.html', context)
 
+
 def about(request):
     """about view"""
     return render(request, 'about.html', {'title': 'About'})
+
 
 class ContributeView(TemplateView):
     """view for the tutorial contribution page"""
@@ -111,7 +118,8 @@ class ContributeView(TemplateView):
 
     def post(self, request):
         """POST a tutorial"""
-        link_count = Tutorial.objects.filter(link=request.POST['tlink']).count()
+        link_count = Tutorial.objects.filter(
+            link=request.POST['tlink']).count()
         if link_count == 0:
             tags, title = generate_tags(request.POST['tlink'])
             self.context['error'] = 'Not a Tutorial Link, Try Again'

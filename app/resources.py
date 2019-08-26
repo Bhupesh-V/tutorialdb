@@ -2,6 +2,7 @@ from import_export import fields, resources
 from import_export.widgets import ManyToManyWidget
 from . models import Tutorial, Tag
 
+
 class TutorialResource(resources.ModelResource):
     tags = fields.Field(
         column_name='tags',
