@@ -3,16 +3,16 @@
 {% block content %}
 <section class="hero is-medium is-dark is-bold">
   <div class="hero-body" style="background-color: #04243B">
-    <center>
+    <div style="text-align: center">
       <div class="container">
-        <img src="{% static 'app/tutorialdb.png' %}">
+        <img src="{% static 'app/tutorialdb.png' %}" alt="tutorialdb">
       </div>
       <h1 class="subtitle">A search engine for programming/dev tutorials.</h1>
-      <img src="{% static 'app/computer.svg' %}" height="100" width="100">
-    </center>
+      <img src="{% static 'app/computer.svg' %}" height="100" width="100" alt="computer">
+    </div>
   </div>
 </section>
-<center>
+<div style="text-align: center">
     <section class="hero is-medium is-success is-bold">
       <div class="hero-body" style="background-color: orange">
         <div class="container">
@@ -22,13 +22,13 @@
         </div>
       </div>
     </section>
-</center>
+</div>
 <section class="section">
   <div class="container">
-    <h1 class="title" align="center">Search Tutorials</h1>
-    <center>
-      <img src="{% static 'app/search.png' %}" height="100" width="100">
-    </center>
+    <h1 class="title" style="text-align: center">Search Tutorials</h1>
+    <div style="text-align: center">
+      <img src="{% static 'app/search.png' %}" height="100" width="100" alt="search">
+    </div>
     <br>
     <form action="{% url 'app:search-results' %}" method="get" onsubmit="return checkEmpty()">
       <div class="field">

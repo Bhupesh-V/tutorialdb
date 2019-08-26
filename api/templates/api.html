@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 {% block content %}
-<center>
+<div style="text-align: center">
   <section class="hero is-medium is-primary is-bold">
     <div class="hero-body">
       <div class="container">
@@ -11,7 +11,7 @@
       </div>
     </div>
   </section>
-</center>
+</div>
 <section class="hero is-medium" style="background-color: orange">
   <div class="hero-body">
     <div>
@@ -19,9 +19,11 @@
         <summary class="title">See Docs</summary>
         <div class="table-container">
           <table class="table is-hoverable">
-            <th>Request</th>
-            <th>Endpoint</th>
-            <th>Description</th>
+            <tr>
+              <th>Request</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+            </tr>
             <tr>
               <td><code>GET</code></td>
               <td><code>/api/tutorials</code></td>
