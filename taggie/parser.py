@@ -32,7 +32,7 @@ def tokenize_tutorial(title, description, generated_tags):
     title_list = list(re.sub(pattern, '', title).lower().split(" "))
     meta_list = list(re.sub(pattern, '', description).lower().split(" "))
 
-    generated_tags += filter(valid_tag, list(title_list + meta_list))
+    generated_tags += list(filter(valid_tag, list(title_list + meta_list)))
 
     if len(generated_tags) == 0:
         generated_tags.append('other')
@@ -79,10 +79,12 @@ def parse_tutorial(res):
 
 def get_tutorial(link):
     """get request to the tutorial link"""
+    res = None
     try:
         res = requests.get(link, headers={
-            'User-Agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36'
-                          + '(KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36'
+            'User-Agent': 
+                'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36'
+                + '(KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36'
         })
         if res.status_code == 200:
             return res

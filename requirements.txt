@@ -1,7 +1,7 @@
-Django==2.2.3
-requests==2.18.4
-beautifulsoup4==4.7.1
-lxml==4.4.0
-djangorestframework==3.10.0
-python-dotenv==0.10.3
-django-import-export==1.2.0
+Django>=2.2.0
+requests>=2.20.0
+beautifulsoup4>=4.7.0
+lxml>=4.4.0
+djangorestframework>=3.10.0
+python-dotenv>=0.10.0
+django-import-export>=1.0.0
