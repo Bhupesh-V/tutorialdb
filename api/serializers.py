@@ -1,25 +1,29 @@
+from app.models import Tag, Tutorial
 from rest_framework import serializers
-from app.models import tutorial, tag
-
-class tagSerializer(serializers.ModelSerializer):
-	
-	class Meta:
-		model = tag
-		fields = ('__all__')
 
 
-class tutorialSerializer(serializers.ModelSerializer):
-	tags = serializers.SlugRelatedField(
+class TagSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Tag
+        fields = ('__all__')
+
+
+class TutorialSerializer(serializers.ModelSerializer):
+    tags = serializers.SlugRelatedField(
         many=True,
         read_only=True,
         slug_field='name'
-     )
-	class Meta:
-		model = tutorial
-		fields = ('__all__')
+    )
 
-class tutorialPOST(serializers.Serializer):
+    class Meta:
+        model = Tutorial
+        fields = ('__all__')
 
-	class Meta:
-		model = tutorial
-		fields = ('link', 'category')
+
+class TutorialPOST(serializers.Serializer):
+    """post a tutorial through the API"""
+
+    class Meta:
+        model = Tutorial
+        fields = ('link', 'category')
