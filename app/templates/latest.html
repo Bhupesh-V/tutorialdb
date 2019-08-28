@@ -17,6 +17,9 @@
         <button class="fa fa-share-alt is-pulled-right" id="shareIcon" 
     onclick='share("{{ tutorial.title }}","{{ tutorial.link }}")'></button>
       </div>
+      <br>
+      <span class="tag is-medium" style="background-color: rgb(0, 196, 167); color: white;"><b>{{ tutorial.category }}</b>
+      </span>
     </div>
     {% endfor %}    
   </div>
