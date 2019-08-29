@@ -31,11 +31,11 @@ def search_query(request):
         tutorials = Tutorial.objects.filter(
             (Q(title__icontains=query) | Q(tags__name__in=list_query))
             & Q(category__icontains=category)
-        ).order_by('id').distinct()
+        ).order_by('id').filter(publish=True).distinct()
     else:
         tutorials = Tutorial.objects.filter(
             (Q(title__icontains=query) | Q(tags__name__in=list_query))
-        ).order_by('id').distinct()
+        ).order_by('id').filter(publish=True).distinct()
     end_time = time.time()
     total = len(tutorials)
     result_time = round(end_time - start_time, 3)

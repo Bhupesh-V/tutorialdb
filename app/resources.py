@@ -12,7 +12,7 @@ class TutorialResource(resources.ModelResource):
     class Meta:
         model = Tutorial
         exclude = ('id',)
-        export_order = ('title', 'link', 'tags', 'category', 'created_date')
+        export_order = ('title', 'link', 'tags', 'category', 'created_date', 'publish')
         import_id_fields = ('title', 'link')
 
 

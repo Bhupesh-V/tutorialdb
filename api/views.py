@@ -32,7 +32,7 @@ def tutorials(request):
     """
     if request.method == 'GET':
         paginator = PageNumberPagination()
-        tutorials = Tutorial.objects.all().order_by('id')
+        tutorials = Tutorial.objects.all().order_by('id').filter(publish=True)
         context = paginator.paginate_queryset(tutorials, request)
         serializer = TutorialSerializer(context, many=True)
         return paginator.get_paginated_response(serializer.data)
@@ -76,7 +76,7 @@ def tutorial_tag(request, tags):
     paginator = PageNumberPagination()
     tags = tags.split(',')
     custom_tutorial = Tutorial.objects.filter(
-        tags__name__in=tags).order_by('id').distinct()
+        tags__name__in=tags).order_by('id').distinct().filter(publish=True)
     context = paginator.paginate_queryset(custom_tutorial, request)
     serializer = TutorialSerializer(context, many=True)
     return paginator.get_paginated_response(serializer.data)
@@ -90,7 +90,7 @@ def tutorial_tag_category(request, tags, category):
     category = category.split(',')
     custom_tutorial = Tutorial.objects.filter(
         tags__name__in=tags, category__in=category
-    ).order_by('id').distinct()
+    ).order_by('id').filter(publish=True).distinct()
     context = paginator.paginate_queryset(custom_tutorial, request)
     serializer = TutorialSerializer(context, many=True)
     return paginator.get_paginated_response(serializer.data)
@@ -110,7 +110,7 @@ def tags(request):
 def latest(request):
     """returns latest 10 tutorials from tutorialdb"""
     paginator = PageNumberPagination()
-    results = Tutorial.objects.all().order_by('-created_date')[:10]
+    results = Tutorial.objects.all().filter(publish=True).order_by('-created_date')[:10]
     context = paginator.paginate_queryset(results, request)
     serializer = TutorialSerializer(context, many=True)
     return paginator.get_paginated_response(serializer.data)

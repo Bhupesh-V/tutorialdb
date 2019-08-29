@@ -35,6 +35,7 @@ class Tutorial(models.Model):
     tags = models.ManyToManyField(Tag)
     category = models.CharField(max_length=20, choices=CATEGORIES)
     created_date = models.DateTimeField(default=timezone.now)
+    publish = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
