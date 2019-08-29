@@ -28,5 +28,11 @@ python manage.py runserver
 ```
 
 4. Make your changes.
-5. Push your changes to your branch. Make sure to comment the `SECRET_KEY` and `LOCAL_HOST` variables.
-6. Create a Pull Request against the main branch.
+5. Run Tests.
+
+```bash
+python manage.py test
+```
+
+6. Push your changes to your branch. Make sure to comment the `SECRET_KEY` and `LOCAL_HOST` variables.
+7. Create a Pull Request against the `master` branch.
