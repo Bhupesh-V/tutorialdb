@@ -63,7 +63,7 @@ def search_query(request):
 
 def latest(request):
     """view for the latest tutorial entries"""
-    tutorials = Tutorial.objects.all().order_by('-id')[:10]
+    tutorials = Tutorial.objects.all().filter(publish=True).order_by('-id')[:10]
     context = {
         'tutorials': tutorials,
         'title': 'Latest'
@@ -85,7 +85,7 @@ def taglinks(request, tagname):
     """view for the tutorials with the {tagname}"""
     taglist = []
     taglist.append(tagname)
-    tutorials = Tutorial.objects.filter(tags__name__in=taglist)
+    tutorials = Tutorial.objects.filter(tags__name__in=taglist, publish=True)
     context = {
         'tag': tagname,
         'tutorials': tutorials,
