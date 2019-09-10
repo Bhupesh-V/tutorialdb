@@ -14,11 +14,6 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![CodeFactor](https://www.codefactor.io/repository/github/bhupesh-v/tutorialdb/badge)](https://www.codefactor.io/repository/github/bhupesh-v/tutorialdb)
 
-## Table of Contents
-
-1. [About the Project](#about-the-project)
-2. [Installation](#installation-)
-
 
 ### About the Project 🔘
 
@@ -31,22 +26,15 @@
 
 1. Create virtual environment.
 
-**Linux:**
-```bash
-virtualenv -p python3 venv && cd venv && source bin/activate
-```
-
-**Windows:**
-
-*Command Prompt*
-```batch
-python -m venv venv && venv\Scripts\activate
-```
-
-*PowerShell*
-```PowerShell
-py -m venv venv; .\venv\Scripts\activate;
-```
+	**Linux/MacOS**
+	```bash
+	virtualenv -p python3 venv && cd venv && source bin/activate
+	```
+	**Windows**
+	(*PowerShell*)
+	```cmd
+	py -m venv venv; .\venv\Scripts\activate;
+	```
 
 2. Clone the repository.
 
@@ -61,19 +49,14 @@ pip install -r requirements.txt
 ```
 
 4. Set-up virtual environment variables.
-
-	1. Comment out the `SECRET_KEY` and `LOCAL_HOST` environment variables and then run `python manage.py shell`.
-	2. Do 
-	```python
-	>>> from django.core.management.utils import get_random_secret_key
-	>>> get_random_secret_key()
-	'[GENERATED KEY]'
+	1. Create a file named `.env` in the root directory & add the following contents.
+	
+	```text
+	SECRET_KEY = 'my-secret-key'
+	LOCAL_HOST = 'my-local-ip'
 	```
-	3. Create a file named `.env` in the same directory as `settings.py` and put the `[GENERATED_KEY]` as your `SECRET_KEY`.
-	4. You may also put your local machine's IP address as the `LOCAL_HOST` in the `.env` file.
-	5. Uncomment the appropriate variables in the `settings.py` file.
-
-	__Note:__ Put both the virtual environment variables as strings (ie within quotes).
+	2. For `SECRET_KEY` use [Django Secret Key Generator](https://www.miniwebtool.com/django-secret-key-generator/) or [Djecrety](https://djecrety.ir/).
+	3. Adding `LOCAL_HOST` is optional.
 
 5. Migrate tables.
 
