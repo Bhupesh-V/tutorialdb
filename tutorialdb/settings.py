@@ -14,6 +14,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     os.environ['LOCAL_HOST'], # your local IP to test the site on your network,
     'tutorialdb.pythonanywhere.com',
+    'tutorialdb-app.herokuapp.com'
 ]
 
 # Application definition
@@ -46,6 +47,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -119,3 +121,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join('static'), )
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+import dj_database_url 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
