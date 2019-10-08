@@ -1,5 +1,8 @@
 setTimeout(function focusMe() {
-	document.getElementById("focus-here").scrollIntoView();
+    const elem = document.getElementById("focus-here");
+    if (elem) {
+        elem.scrollIntoView();
+    }
 });
 
 function share(title, link) {
