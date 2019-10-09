@@ -17,6 +17,8 @@ The following is a set of guidelines for contributing to tutorialdb. These are m
 
 ### Submitting Pull Requests
 
+**Before submitting a Pull Request, please make sure there is a corresponding issue.  The PR should solve an existing issue.**
+
 Follow the steps below while submitting a PR.
 
 1. Create your own branch (never commit to master).
