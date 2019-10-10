@@ -1,6 +1,8 @@
-setTimeout(function focusMe() {
+function focusMe() { window.setTimeout( function() {
 	document.getElementById("focus-here").scrollIntoView();
-});
+}) };
+
+focusMe();
 
 function share(title, link) {
 	if (navigator.share) {
