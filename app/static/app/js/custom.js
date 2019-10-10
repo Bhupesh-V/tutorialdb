@@ -20,7 +20,6 @@ function checkEmpty() {
 	if (input.value === "" || input.value === null) {
 		return false;
 	}
-	else {
-		return true;
-	}
+	
+	return true;
 }
