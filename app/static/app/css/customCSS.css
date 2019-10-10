@@ -24,6 +24,10 @@ a.navbar-item {
 
 summary.title {
     cursor: pointer;
-    display: inline-block;
     outline: none;
+    float: left;
+}
+
+summary.title + .table-container {
+    clear: both;
 }
