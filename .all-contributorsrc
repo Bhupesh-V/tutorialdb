@@ -28,6 +28,15 @@
         "bug",
         "design"
       ]
+    },
+    {
+      "login": "JGabrielGruber",
+      "name": "José Gabriel Gruber",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/22822110?v=4",
+      "profile": "https://www.crowbar.com.br",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
