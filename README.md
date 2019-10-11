@@ -11,7 +11,7 @@
 [![GitHub license](https://img.shields.io/github/license/Bhupesh-V/tutorialdb)](https://github.com/Bhupesh-V/tutorialdb/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/Bhupesh-V/tutorialdb)](https://github.com/Bhupesh-V/tutorialdb/issues)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/af7df141776744a49435a876c7b87834)](https://app.codacy.com/app/Bhupesh-V/tutorialdb?utm_source=github.com&utm_medium=referral&utm_content=Bhupesh-V/tutorialdb&utm_campaign=Badge_Grade_Dashboard)
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 [![CodeFactor](https://www.codefactor.io/repository/github/bhupesh-v/tutorialdb/badge)](https://www.codefactor.io/repository/github/bhupesh-v/tutorialdb)
 
 
@@ -94,6 +94,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/Animesh-Ghosh"><img src="https://avatars3.githubusercontent.com/u/34956994?v=4" width="100px;" alt="MaDDogx"/><br /><sub><b>MaDDogx</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=Animesh-Ghosh" title="Code">💻</a> <a href="https://github.com/Bhupesh-V/tutorialdb/issues?q=author%3AAnimesh-Ghosh" title="Bug reports">🐛</a> <a href="#ideas-Animesh-Ghosh" title="Ideas, Planning, & Feedback">🤔</a> <a href="#review-Animesh-Ghosh" title="Reviewed Pull Requests">👀</a> <a href="#userTesting-Animesh-Ghosh" title="User Testing">📓</a></td>
     <td align="center"><a href="https://github.com/liorbentov"><img src="https://avatars3.githubusercontent.com/u/8587019?v=4" width="100px;" alt="Lior Shub"/><br /><sub><b>Lior Shub</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=liorbentov" title="Code">💻</a> <a href="https://github.com/Bhupesh-V/tutorialdb/issues?q=author%3Aliorbentov" title="Bug reports">🐛</a> <a href="#design-liorbentov" title="Design">🎨</a></td>
+    <td align="center"><a href="https://www.crowbar.com.br"><img src="https://avatars0.githubusercontent.com/u/22822110?v=4" width="100px;" alt="José Gabriel Gruber"/><br /><sub><b>José Gabriel Gruber</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=JGabrielGruber" title="Code">💻</a></td>
   </tr>
 </table>
 
