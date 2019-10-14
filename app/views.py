@@ -1,7 +1,7 @@
 import time
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from taggie.parser import generate_tags
@@ -73,7 +73,8 @@ def latest(request):
 
 def tags(request):
     """view for the tags"""
-    tags = Tag.objects.all()
+    tags = Tutorial.objects.values('tags__name').annotate(count = Count('tags'))
+
     context = {
         'tags': tags,
         'title': 'Tags'
