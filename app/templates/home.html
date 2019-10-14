@@ -33,7 +33,7 @@
     <form action="{% url 'app:search-results' %}" method="get" onsubmit="return checkEmpty()">
       <div class="field">
         <div class="control has-icons-left">
-          <input class="input is-rounded" name="q" type="search" placeholder="search tutorials..." id="search-bar">
+          <input class="input is-rounded" name="q" type="search" placeholder="search tutorials..." id="search-bar" value="{{ query }}">
           <span class="icon is-small is-left">
             <i class="fa fa-search" aria-hidden="true"></i>
           </span>
@@ -47,7 +47,11 @@
               <select name="category">
                 <option disabled selected value="">Select Category</option>
                 {% for category_value, category_name in categories %}
-                <option value="{{ category_value }}">{{ category_name }}</option>
+                  <option value="{{ category_value }}"
+                  {% if category_value == category %} selected {% endif %}
+                  >
+                  {{ category_name }}
+                  </option>
                 {% endfor %}
               </select>
             </div>

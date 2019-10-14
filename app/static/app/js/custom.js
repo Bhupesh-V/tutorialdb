@@ -1,5 +1,8 @@
 function focusMe() { window.setTimeout( function() {
-	document.getElementById("focus-here").scrollIntoView();
+	  const elem = document.getElementById("focus-here");
+    if (elem) {
+        elem.scrollIntoView();
+    }
 }) };
 
 focusMe();
@@ -20,6 +23,5 @@ function checkEmpty() {
 	if (input.value === "" || input.value === null) {
 		return false;
 	}
-	
 	return true;
 }
