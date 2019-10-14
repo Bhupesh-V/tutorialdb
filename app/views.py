@@ -51,6 +51,7 @@ def search_query(request):
 
     context = {
         'query': query,
+        'category': category,
         'tutorials': tutorials,
         'total': total,
         'time': result_time,
