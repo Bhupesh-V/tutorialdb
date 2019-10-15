@@ -73,7 +73,7 @@ def latest(request):
 
 def tags(request):
     """view for the tags"""
-    tags = Tutorial.objects.values('tags__name').annotate(count = Count('tags'))
+    tags = Tutorial.objects.filter(publish=True).values('tags__name').annotate(count=Count('tags'))
 
     context = {
         'tags': tags,
