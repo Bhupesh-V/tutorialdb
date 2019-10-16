@@ -4,12 +4,19 @@
 <div class="section">
   <div class="container">
     <h2 class="title is-1">Tags</h2>
-    {% if tags %}
-    {% for tag in tags %}
-      <span class="tag box" name="colorpad">
-          <a href="{% url 'app:tag-links' tag.name %}" class="title is-5">📌 {{ tag.name }}</a>
-      </span>&nbsp;
-    {% endfor %}
+    {% if active_tags %}
+      {% for tag in active_tags %}
+          <span class="tag box" name="colorpad">
+              <a href="{% url 'app:tag-links' tag.name %}" class="title is-5">📌 {{ tag.name }}</a>
+          </span>&nbsp;
+      {% endfor %}
+    {% endif %}
+    {% if inactive_tags %}
+      {% for tag in inactive_tags %}
+          <span class="tag box disabled-grey">
+              <a href="javascript:void(0);" class="title is-5">📌 {{ tag.name }}</a>
+          </span>&nbsp;
+      {% endfor %}
     {% endif %}
   </div>
 </div>

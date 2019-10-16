@@ -31,3 +31,11 @@ summary.title {
 summary.title + .table-container {
     clear: both;
 }
+
+.disabled-grey {
+  background-color: #cccccc;
+}
+
+.disabled-grey a {
+  cursor: default;
+}

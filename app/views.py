@@ -75,8 +75,11 @@ def latest(request):
 def tags(request):
     """view for the tags"""
     tags = Tag.objects.all()
+    active_tags = tags.filter(tutorial__in=Tutorial.objects.filter(publish=True)).distinct()
+    inactive_tags = tags.exclude(id__in=active_tags.values_list('id', flat=True))
     context = {
-        'tags': tags,
+        'active_tags': active_tags,
+        'inactive_tags': inactive_tags,
         'title': 'Tags'
     }
     return render(request, 'tags.html', context)
