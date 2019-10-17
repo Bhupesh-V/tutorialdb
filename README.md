@@ -13,7 +13,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/af7df141776744a49435a876c7b87834)](https://app.codacy.com/app/Bhupesh-V/tutorialdb?utm_source=github.com&utm_medium=referral&utm_content=Bhupesh-V/tutorialdb&utm_campaign=Badge_Grade_Dashboard)
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 [![CodeFactor](https://www.codefactor.io/repository/github/bhupesh-v/tutorialdb/badge)](https://www.codefactor.io/repository/github/bhupesh-v/tutorialdb)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/a4b8a52583b6706c0b3f/maintainability)](https://codeclimate.com/github/Bhupesh-V/tutorialdb/maintainability)
 
 ### About the Project 🔘
 
