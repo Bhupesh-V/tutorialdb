@@ -7,7 +7,7 @@
     {% if tags %}
     {% for tag in tags %}
       <span class="tag box" name="colorpad">
-          <a href="{% url 'app:tag-links' tag.name %}" class="title is-5">📌 {{ tag.name }}</a>
+          <a href="{% url 'app:tag-links' tag.tags__name %}" class="title is-5">📌 {{ tag.tags__name }} {{ tag.count }}</a>
       </span>&nbsp;
     {% endfor %}
     {% endif %}
