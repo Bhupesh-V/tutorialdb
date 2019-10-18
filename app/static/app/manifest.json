@@ -1,6 +1,6 @@
 {
   "short_name": "tutorialdb",
-  "name": "Tutorial DB",
+  "name": "tutorialdb",
   "icons": [
     {
       "src": "/static/app/icon-192.png",
