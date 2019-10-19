@@ -43,7 +43,7 @@
         <ul class="pagination-list">
         {% for num in tutorials.paginator.page_range %}
           {% if tutorials.number == num %}
-          <li><a class="pagination-link" href="#!">{{ num }}</a></li>
+          <li><a class="pagination-link is-current" href="#!">{{ num }}</a></li>
           {% else %}
           <li><a class="pagination-link" href="?page={{ num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}" >{{ num }}</a></li>
           {% endif %}
