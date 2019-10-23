@@ -31,7 +31,7 @@ class Tutorial(models.Model):
     )
 
     title = models.CharField(max_length=200)
-    link = models.URLField()
+    link = models.URLField(max_length=1000)
     tags = models.ManyToManyField(Tag)
     category = models.CharField(max_length=20, choices=CATEGORIES)
     created_date = models.DateTimeField(default=timezone.now)
