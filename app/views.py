@@ -131,10 +131,9 @@ class ContributeView(TemplateView):
                     'contribute.html',
                     self.context
                 )
-            else:
-                # thankyou.html shouldn't be accessible unless someone successfully posts
-                # a tutorial
-                return render(request, 'thankyou.html', {'title': 'Thanks!'})
+            # thankyou.html shouldn't be accessible unless someone successfully posts
+            # a tutorial
+            return render(request, 'thankyou.html', {'title': 'Thanks!'})
         return render(request, 'thankyou.html', {'title': 'Thanks!'})
 
 

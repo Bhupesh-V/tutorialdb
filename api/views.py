@@ -49,10 +49,9 @@ def tutorials(request):
                         {"message ": "Not a Tutorial link"},
                         status=status.HTTP_406_NOT_ACCEPTABLE
                     )
-                else:
-                    return JSONResponse(
-                        {"message ": "Created, Thanks"}, status=status.HTTP_201_CREATED
-                    )
+                return JSONResponse(
+                    {"message ": "Created, Thanks"}, status=status.HTTP_201_CREATED
+                )
             return JSONResponse(
                 {"message ": "Created, Thanks"}, status=status.HTTP_201_CREATED
             )
