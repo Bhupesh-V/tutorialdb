@@ -4,6 +4,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import TemplateView
+
 from taggie.parser import generate_tags
 from .models import Tag, Tutorial
 
@@ -119,29 +120,40 @@ class ContributeView(TemplateView):
 
     def post(self, request):
         """POST a tutorial"""
-        link_count = Tutorial.objects.filter(
-            link=request.POST['tlink']).count()
-        if link_count == 0:
-            tags, title = generate_tags(request.POST['tlink'])
+        link = request.POST['tlink']
+        category = request.POST['tcategory']
+        result = handle_tutorial_post_request(link, category)
+        if result is not None:
             self.context['error'] = 'Not a Tutorial Link, Try Again'
-            if 'other' in tags:
+            if result:
                 return render(
                     request,
                     'contribute.html',
                     self.context
                 )
-            else:
-                tutorial_object = Tutorial.objects.create(
-                    title=title,
-                    link=request.POST['tlink'],
-                    category=request.POST['tcategory']
-                )
-                for tag in tags:
-                    obj, created = Tag.objects.get_or_create(name=tag)
-
-                tag_obj_list = Tag.objects.filter(name__in=tags)
-                tutorial_object.tags.set(tag_obj_list)
-        # thankyou.html shouldn't be accessible unless someone successfully posts
-        # a tutorial
-                return render(request, 'thankyou.html', {'title': 'Thanks!'})
+            # thankyou.html shouldn't be accessible unless someone successfully posts
+            # a tutorial
+            return render(request, 'thankyou.html', {'title': 'Thanks!'})
         return render(request, 'thankyou.html', {'title': 'Thanks!'})
+
+
+def handle_tutorial_post_request(link, category):
+    if Tutorial.objects.filter(
+            link=link
+    ).exists():
+        tags, title = generate_tags(link)
+        if 'other' in tags:
+            return True
+        else:
+            tutorial_object = Tutorial.objects.create(
+                title=title,
+                link=link,
+                category=category
+            )
+            tag_obj_list = []
+            for tag in tags:
+                obj, created = Tag.objects.get_or_create(name=tag)
+                tag_obj_list.append(obj)
+
+            tutorial_object.tags.set(tag_obj_list)
+            return False
