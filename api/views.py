@@ -1,11 +1,12 @@
-from app.models import Tag, Tutorial
 from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.renderers import JSONRenderer
-from taggie.parser import generate_tags
+
+from app.models import Tag, Tutorial
+from app.views import handle_tutorial_post_request
 from .serializers import TagSerializer, TutorialPOST, TutorialSerializer
 
 
@@ -39,26 +40,16 @@ def tutorials(request):
     elif request.method == 'POST':
         postserializer = TutorialPOST(data=request.data)
         if postserializer.is_valid():
-            link_count = Tutorial.objects.filter(
-                link=request.data['link']).count()
-            if link_count == 0:
-                tags, title = generate_tags(request.data['link'])
-                if 'other' in tags:
+            link = request.data['link']
+            category = request.data['category']
+            result = handle_tutorial_post_request(link, category)
+            if result is not None:
+                if result:
                     return JSONResponse(
                         {"message ": "Not a Tutorial link"},
                         status=status.HTTP_406_NOT_ACCEPTABLE
                     )
                 else:
-                    tutorial_object = Tutorial.objects.create(
-                        title=title,
-                        link=request.data['link'],
-                        category=request.data['category']
-                    )
-                    for tag in tags:
-                        obj, created = Tag.objects.get_or_create(name=tag)
-
-                    tag_obj_list = Tag.objects.filter(name__in=tags)
-                    tutorial_object.tags.set(tag_obj_list)
                     return JSONResponse(
                         {"message ": "Created, Thanks"}, status=status.HTTP_201_CREATED
                     )
