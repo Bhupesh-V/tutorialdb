@@ -1,4 +1,4 @@
-Django>=2.2.0
+Django>=2.2.6
 requests>=2.20.0
 beautifulsoup4>=4.7.0
 lxml>=4.4.0

@@ -6,7 +6,7 @@ load_dotenv()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = '0iv8e+-xww1%r4+x^xl%1h*f8wbgdzjjd3dw$1%7^s(a#ac1^0'
 
 DEBUG = True
 
