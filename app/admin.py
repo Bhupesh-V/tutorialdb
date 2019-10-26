@@ -12,3 +12,15 @@ class TagAdmin(ImportExportModelAdmin):
 class TutorialAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'title', 'publish')
     resource_class = TutorialResource
+    actions = ['publish_tutorial']
+
+    def publish_tutorial(self, request, queryset):
+        rows_updated = queryset.update(publish=True)
+
+        if rows_updated == 1:
+            message_bit = '1 Tutorial was'
+        else:
+            message_bit = f'{rows_updated} Tutorials were'
+        self.message_user(request, f'{message_bit} marked as published.')
+
+    publish_tutorial.short_description = 'Publish selected tutorials'
