@@ -108,6 +108,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.vscode/
 
 # Spyder project settings
 .spyderproject
@@ -126,6 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# staticfiles collected with python manage.py collectstatic
+staticfiles/
 
 # End of https://www.gitignore.io/api/python
 

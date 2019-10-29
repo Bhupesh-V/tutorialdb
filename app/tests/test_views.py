@@ -57,3 +57,4 @@ class TestTemplateNames(TransactionTestCase):
         response = self.client.get('/tags/')
         self.assertTemplateUsed(template_name='tags.html')
 
+# class SearchQueryTests(Test)
