@@ -1,4 +1,7 @@
 import time
+import logging
+
+logger = logging.getLogger(__name__)
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
@@ -26,7 +29,12 @@ def search_query(request):
     2 - Tags contain the exact keyword(s)
     3 - Title contains partial keyword matches
     """
-    query = request.GET.get('q').lower().strip()
+    try:
+        # if somehow query is an empty string
+        query = request.GET.get('q').lower().strip()
+    except:
+        # pretend it's a space
+        query = " "
     category = request.GET.get('category')
     list_query = query.split()
 
@@ -34,12 +42,12 @@ def search_query(request):
 
     # Begin with Category-valid Tutorials
     all_tutorials = Tutorial.objects.filter(category=category) if category else Tutorial.objects.all()
-    print(f"all tutorials {all_tutorials}")
+    logger.debug(f"all tutorials {all_tutorials}")
     if len(list_query):
         # Get all Tutorials with partial keyword matches in title OR exact keyword titles in tags
         partial_title_matches = Q()
         for keyword in list_query:
-            print(f"Keyword is {keyword}")
+            logger.debug(f"Keyword is {keyword}")
             partial_title_matches.add(Q(title__icontains=keyword), Q.OR)
 
         filtered_tutorials = all_tutorials.filter(
@@ -50,20 +58,20 @@ def search_query(request):
         def relevance_order(tut):
             score = 0
             title_set = set(tut.title.lower().split())
-            print(f"titleset is {title_set}")
+            logger.debug(f"titleset is {title_set}")
             query_set = set(list_query)
-            print(f"queryset is {query_set}")
+            logger.debug(f"queryset is {query_set}")
             tag_set = set(tut.tags.values_list('name', flat=True))
-            print(f"tagset is {tag_set}")
+            logger.debug(f"tagset is {tag_set}")
             title_score = len(title_set & query_set)
             tag_score = len(tag_set & query_set)
             # give more weight to exact title matches
-            print(f"{tut}: {title_score}*5 + {tag_score}")
+            logger.debug(f"{tut}: {title_score}*5 + {tag_score}")
             return -(title_score *5 + tag_score)
 
         sorted_tutorials = sorted(filtered_tutorials, key=relevance_order)
-        print(f"filtered_tut is {filtered_tutorials}")
-        print(f"sorted_tut is {sorted_tutorials}")
+        logger.debug(f"filtered_tut is {filtered_tutorials}")
+        logger.debug(f"sorted_tut is {sorted_tutorials}")
         
     else:
         # no need to go through all this trouble if user searched an empty string!

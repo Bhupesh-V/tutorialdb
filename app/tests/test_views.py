@@ -1,3 +1,7 @@
+import logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
 from django.test import SimpleTestCase, TransactionTestCase, TestCase
 from django.urls import reverse
 from app.models import Tag, Tutorial
@@ -78,53 +82,52 @@ class SearchQueryViewTests(TestCase):
 
     url = reverse('app:search-results')
 
-    # def test_search_empty(self):
+    def test_search_empty(self):
         
-    #     response = self.client.get(self.url, data={
-    #         "q": "hello"
-    #     })
-    #     # print(response.context)
-    #     self.assertQuerysetEqual(response.context['tutorials'], [])
+        response = self.client.get(self.url, data={
+            "q": "hello"
+        })
+        self.assertQuerysetEqual(response.context['tutorials'], [])
 
-    # def test_simple_search(self):
-    #     # crate our sample tags
-    #     # save their ids for adding to the corresponding tutorial 
-    #     tags = ['javascript', 'python']
-    #     tag_pks = {t:create_tag(t) for t in tags}
+    def test_simple_search(self):
+        # crate our sample tags
+        # save their ids for adding to the corresponding tutorial 
+        tags = ['javascript', 'python']
+        tag_pks = {t:create_tag(t) for t in tags}
         
-    #     # create our sample tutorials
-    #     tutorials= [{
-    #         "title": "Python 101",
-    #         "link": "https://www.python.org",
-    #         "tags": ["python"],
-    #         "category": "docs"
-    #     },
-    #     {
-    #         "title": "Python Advanced",
-    #         "link": "https://www.pyadv.com",
-    #         "tags": ["python"],
-    #         "category": "course"
-    #     },
-    #     {
-    #         "title": "JavaScript 101",
-    #         "link": "https://www.jsResource.com",
-    #         "tags": ["javascript"],
-    #         "category": "video"
-    #     }
-    #     ]
-    #     for tut in tutorials:
-    #         # compile a list of tag ids for this tut
-    #         my_tags = [tag_pks[t] for t in tut['tags'] if t in tag_pks]
-    #         create_tutorial(tut['title'], tut['link'], my_tags, tut['category'])
+        # create our sample tutorials
+        tutorials= [{
+            "title": "Python 101",
+            "link": "https://www.python.org",
+            "tags": ["python"],
+            "category": "docs"
+        },
+        {
+            "title": "Python Advanced",
+            "link": "https://www.pyadv.com",
+            "tags": ["python"],
+            "category": "course"
+        },
+        {
+            "title": "JavaScript 101",
+            "link": "https://www.jsResource.com",
+            "tags": ["javascript"],
+            "category": "video"
+        }
+        ]
+        for tut in tutorials:
+            # compile a list of tag ids for this tut
+            my_tags = [tag_pks[t] for t in tut['tags'] if t in tag_pks]
+            create_tutorial(tut['title'], tut['link'], my_tags, tut['category'])
             
-    #     res1 = self.client.get(self.url, data={"q": "python"})
-    #     self.assertQuerysetEqual(res1.context['tutorials'], ['<Tutorial: Python 101>','<Tutorial: Python Advanced>', ])
+        res1 = self.client.get(self.url, data={"q": "python"})
+        self.assertQuerysetEqual(res1.context['tutorials'], ['<Tutorial: Python 101>','<Tutorial: Python Advanced>', ])
         
-    #     res2 = self.client.get(self.url, data={"q": "javascript"})
-    #     self.assertQuerysetEqual(res2.context['tutorials'], ['<Tutorial: JavaScript 101>'])
+        res2 = self.client.get(self.url, data={"q": "javascript"})
+        self.assertQuerysetEqual(res2.context['tutorials'], ['<Tutorial: JavaScript 101>'])
 
-    #     res3 = self.client.get(self.url, data={"q": "kotlin"})
-    #     self.assertQuerysetEqual(res3.context['tutorials'], [])
+        res3 = self.client.get(self.url, data={"q": "kotlin"})
+        self.assertQuerysetEqual(res3.context['tutorials'], [])
 
     def test_search_relevance(self):
         """ full matches are placed before partial matches """
@@ -185,7 +188,6 @@ class SearchQueryViewTests(TestCase):
         res2 = self.client.get(self.url, data={"q": "java"})
         first_page = res2.context['tutorials']
         paginator = first_page.paginator
-        print(f"paginator's list is {paginator.object_list}")
         self.assertQuerysetEqual(paginator.object_list, [
             '<Tutorial: A Cup of Java>',
             '<Tutorial: Java Patterns>',
