@@ -32,7 +32,7 @@ def search_query(request):
     try:
         # if somehow query is an empty string
         query = request.GET.get('q').lower().strip()
-    except:
+    except AttributeError:
         # pretend it's a space
         query = " "
     category = request.GET.get('category')
@@ -56,7 +56,6 @@ def search_query(request):
         
         # Now to do this sorting operation, we'll have to convert to a list     
         def relevance_order(tut):
-            score = 0
             title_set = set(tut.title.lower().split())
             logger.debug(f"titleset is {title_set}")
             query_set = set(list_query)
