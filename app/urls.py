@@ -13,4 +13,5 @@ urlpatterns = [
     path('tags/tag=<tagname>', views.taglinks, name='tag-links'),
     path('about/', views.about, name='about'),
     path('contribute/', ContributeView.as_view(), name='contribute'),
+    path('autocomplete/', views.autocomplete, name='autocomplete'),
 ]
