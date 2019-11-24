@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+<style>
+  .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; cursor:pointer; }
+  .autocomplete-selected { background: #F0F0F0; }
+</style>
 <section class="hero is-medium is-dark is-bold">
   <div class="hero-body" style="background-color: #04243B">
     <div style="text-align: center">
@@ -64,5 +68,12 @@
     </form>
   </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.10/jquery.autocomplete.min.js"></script>
+<script>
+  $('#search-bar').autocomplete({
+    serviceUrl: '/autocomplete'
+});
+</script>
 {% block results %}{% endblock results %}
 {% endblock content %}

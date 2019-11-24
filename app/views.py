@@ -2,10 +2,11 @@ import time
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 from django.views.generic import TemplateView
 from taggie.parser import generate_tags
 from .models import Tag, Tutorial
+import json
 
 
 class HomePageView(TemplateView):
@@ -145,3 +146,13 @@ class ContributeView(TemplateView):
         # a tutorial
                 return render(request, 'thankyou.html', {'title': 'Thanks!'})
         return render(request, 'thankyou.html', {'title': 'Thanks!'})
+
+def autocomplete(request):
+    query = request.GET.get('query')
+    tags = Tag.objects.filter(name__icontains=query) 
+    taglist = []
+    for t in tags:
+        taglist.append(t.name)
+    taglist_json = {"suggestions":taglist}
+    taglist_string = json.dumps(taglist_json)
+    return HttpResponse(taglist_string)
