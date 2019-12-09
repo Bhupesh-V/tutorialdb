@@ -1,28 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-<section class="hero is-medium is-dark is-bold">
-  <div class="hero-body" style="background-color: #04243B">
-    <div style="text-align: center">
-      <div class="container">
-        <img src="{% static 'app/tutorialdb.png' %}" alt="tutorialdb">
-      </div>
-      <h1 class="subtitle">A search engine for programming/dev tutorials.</h1>
-      <img src="{% static 'app/computer.svg' %}" height="100" width="100" alt="computer">
-    </div>
-  </div>
-</section>
-<div style="text-align: center">
-    <section class="hero is-medium is-success is-bold">
-      <div class="hero-body" style="background-color: orange">
-        <div class="container">
-          <h3 class="title is-3">🙅🏽‍♂️ No useless stuff or ads.</h3>
-          <h3 class="title is-3">✅ Direct Links to tutorials.</h3>
-          <h3 class="title is-3">🚀 Start learning asap.</h3>
-        </div>
-      </div>
-    </section>
-</div>
 <section class="section">
   <div class="container">
     <h1 class="title" style="text-align: center">Search Tutorials</h1>
@@ -64,5 +42,27 @@
     </form>
   </div>
 </section>
+<section class="hero is-medium is-dark is-bold">
+  <div class="hero-body" style="background-color: #04243B">
+    <div style="text-align: center">
+      <div class="container">
+        <img src="{% static 'app/tutorialdb.png' %}" alt="tutorialdb">
+      </div>
+      <h1 class="subtitle">A search engine for programming/dev tutorials.</h1>
+      <img src="{% static 'app/computer.svg' %}" height="100" width="100" alt="computer">
+    </div>
+  </div>
+</section>
+<div style="text-align: center">
+    <section class="hero is-medium is-success is-bold">
+      <div class="hero-body" style="background-color: orange">
+        <div class="container">
+          <h3 class="title is-3">🙅🏽‍♂️ No useless stuff or ads.</h3>
+          <h3 class="title is-3">✅ Direct Links to tutorials.</h3>
+          <h3 class="title is-3">🚀 Start learning asap.</h3>
+        </div>
+      </div>
+    </section>
+</div>
 {% block results %}{% endblock results %}
 {% endblock content %}
