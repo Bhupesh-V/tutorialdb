@@ -1,11 +1,13 @@
 import time
 
+from django.core.cache import cache
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from taggie.parser import generate_tags
 from .models import Tag, Tutorial
+from . import cache_constants
 
 
 class HomePageView(TemplateView):
@@ -74,7 +76,7 @@ def latest(request):
 
 def tags(request):
     """view for the tags"""
-    tags = Tag.objects.all()
+    tags = cache.get_or_set(cache_constants.ALL_TAGS, Tag.objects.all(), None)
     context = {
         'tags': tags,
         'title': 'Tags'
@@ -141,6 +143,9 @@ class ContributeView(TemplateView):
 
                 tag_obj_list = Tag.objects.filter(name__in=tags)
                 tutorial_object.tags.set(tag_obj_list)
+
+                # clearing the all tags cache
+                cache.delete(cache_constants.ALL_TAGS)
         # thankyou.html shouldn't be accessible unless someone successfully posts
         # a tutorial
                 return render(request, 'thankyou.html', {'title': 'Thanks!'})
