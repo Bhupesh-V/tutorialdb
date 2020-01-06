@@ -99,6 +99,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Yegorov"><img src="https://avatars1.githubusercontent.com/u/2566462?v=4" width="100px;" alt=""/><br /><sub><b>Artem</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=Yegorov" title="Code">💻</a></td>
     <td align="center"><a href="https://svendborg-webdesign.dk/en"><img src="https://avatars3.githubusercontent.com/u/4233458?v=4" width="100px;" alt=""/><br /><sub><b>Viktor Strate Kløvedal</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=viktorstrate" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/chrisshyi"><img src="https://avatars1.githubusercontent.com/u/24416618?v=4" width="100px;" alt=""/><br /><sub><b>Chris Shyi</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=chrisshyi" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/vikneswaran20"><img src="https://avatars1.githubusercontent.com/u/8945535?v=4" width="100px;" alt=""/><br /><sub><b>vikneswaran</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=vikneswaran20" title="Code">💻</a></td>
   </tr>
 </table>
 
