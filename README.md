@@ -89,16 +89,20 @@ Please read the [CONTRIBUTING](CONTRIBUTING.md) file for the process of submitti
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/Animesh-Ghosh"><img src="https://avatars3.githubusercontent.com/u/34956994?v=4" width="100px;" alt="MaDDogx"/><br /><sub><b>MaDDogx</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=Animesh-Ghosh" title="Code">💻</a> <a href="https://github.com/Bhupesh-V/tutorialdb/issues?q=author%3AAnimesh-Ghosh" title="Bug reports">🐛</a> <a href="#ideas-Animesh-Ghosh" title="Ideas, Planning, & Feedback">🤔</a> <a href="#review-Animesh-Ghosh" title="Reviewed Pull Requests">👀</a> <a href="#userTesting-Animesh-Ghosh" title="User Testing">📓</a></td>
-    <td align="center"><a href="https://github.com/liorbentov"><img src="https://avatars3.githubusercontent.com/u/8587019?v=4" width="100px;" alt="Lior Shub"/><br /><sub><b>Lior Shub</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=liorbentov" title="Code">💻</a> <a href="https://github.com/Bhupesh-V/tutorialdb/issues?q=author%3Aliorbentov" title="Bug reports">🐛</a> <a href="#design-liorbentov" title="Design">🎨</a></td>
-    <td align="center"><a href="https://www.crowbar.com.br"><img src="https://avatars0.githubusercontent.com/u/22822110?v=4" width="100px;" alt="José Gabriel Gruber"/><br /><sub><b>José Gabriel Gruber</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=JGabrielGruber" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/Yegorov"><img src="https://avatars1.githubusercontent.com/u/2566462?v=4" width="100px;" alt="Artem"/><br /><sub><b>Artem</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=Yegorov" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Animesh-Ghosh"><img src="https://avatars3.githubusercontent.com/u/34956994?v=4" width="100px;" alt=""/><br /><sub><b>MaDDogx</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=Animesh-Ghosh" title="Code">💻</a> <a href="https://github.com/Bhupesh-V/tutorialdb/issues?q=author%3AAnimesh-Ghosh" title="Bug reports">🐛</a> <a href="#ideas-Animesh-Ghosh" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/Bhupesh-V/tutorialdb/pulls?q=is%3Apr+reviewed-by%3AAnimesh-Ghosh" title="Reviewed Pull Requests">👀</a> <a href="#userTesting-Animesh-Ghosh" title="User Testing">📓</a></td>
+    <td align="center"><a href="https://github.com/liorbentov"><img src="https://avatars3.githubusercontent.com/u/8587019?v=4" width="100px;" alt=""/><br /><sub><b>Lior Shub</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=liorbentov" title="Code">💻</a> <a href="https://github.com/Bhupesh-V/tutorialdb/issues?q=author%3Aliorbentov" title="Bug reports">🐛</a> <a href="#design-liorbentov" title="Design">🎨</a></td>
+    <td align="center"><a href="https://www.crowbar.com.br"><img src="https://avatars0.githubusercontent.com/u/22822110?v=4" width="100px;" alt=""/><br /><sub><b>José Gabriel Gruber</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=JGabrielGruber" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Yegorov"><img src="https://avatars1.githubusercontent.com/u/2566462?v=4" width="100px;" alt=""/><br /><sub><b>Artem</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=Yegorov" title="Code">💻</a></td>
+    <td align="center"><a href="https://svendborg-webdesign.dk/en"><img src="https://avatars3.githubusercontent.com/u/4233458?v=4" width="100px;" alt=""/><br /><sub><b>Viktor Strate Kløvedal</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=viktorstrate" title="Code">💻</a></td>
   </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
