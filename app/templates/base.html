@@ -98,20 +98,19 @@
     <script src="{% static 'app/js/colorpad.js' %}"></script>
     <script async src="{% static 'app/js/custom.js' %}"></script>
     <script type="text/javascript">
-      window.onload = function() {
-        registerSW();
-      };
-    </script>
-    <script type="text/javascript">
       async function registerSW(){
         if('serviceWorker' in navigator) {
           try{
-              await navigator.serviceWorker.register("{% static 'app/js/SW.js' %}");
+              await navigator.serviceWorker.register("/service-worker.js");
           } catch(e) {
             console.log('SW Registration Failed.');
           }
         }
       }
+
+      window.onload = function() {
+        registerSW();
+      };
     </script>
   </body>
 </html>
