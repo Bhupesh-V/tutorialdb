@@ -101,8 +101,8 @@ def about(request):
     """about view"""
     return render(request, 'about.html', {'title': 'About'})
 
-def tutorial_redirect(request, id):
-    tutorial = Tutorial.objects.get(pk=id, publish=True)
+def tutorial_redirect(request, pk):
+    tutorial = Tutorial.objects.get(pk=pk, publish=True)
     TutorialHitCount.objects.create(tutorial=tutorial)
     return redirect(tutorial.link)
 
