@@ -1,5 +1,5 @@
 import graphene
-from graphene_django.types import DjangoObjectType
+from graphene_django.types import DjangoObjectType #type:ignore
 
 from .models import Tag,Tutorial
 
@@ -37,5 +37,15 @@ class Query(object):
 	        return Tag.objects.get(pk=id)
         if name is not None:
 	        return Tag.objects.get(name=name)	
+        return None
+
+    def resolve_tutorial(self, info, **kwargs):
+        id = kwargs.get('id')
+        name = kwargs.get('name')
+	
+        if id is not None:
+	        return Tutorial.objects.get(pk=id)
+        if name is not None:
+	        return Tutorial.objects.get(name=name)	
         return None
 
