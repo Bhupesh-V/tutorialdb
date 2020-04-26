@@ -1,5 +1,7 @@
 import graphene
 from graphene_django.types import DjangoObjectType #type:ignore
+from graphene_django.rest_framework.mutation import SerializerMutation
+from api.serializers import TagSerializer, TutorialSerializer, TutorialPOST
 
 from .models import Tag,Tutorial
 
@@ -10,6 +12,18 @@ class TagType(DjangoObjectType):
 class TutorialType(DjangoObjectType):
     class Meta:
         model = Tutorial
+
+class TagMutation(SerializerMutation):
+	class Meta:
+	     serializer_class = TagSerializer	
+	     model_operations = ['create', 'update']
+	     lookup_field = 'id'
+
+class TutorialMutation(SerializerMutation):
+	class Meta:
+	     serializer_class = TutorialSerializer	
+	     model_operations = ['create', 'update']
+	     lookup_field = 'id'
 
 class Query(object):
     tag = graphene.Field(TagType,
@@ -49,3 +63,6 @@ class Query(object):
 	        return Tutorial.objects.get(name=name)	
         return None
 
+class Mutation(object):
+	create_tutorial = TutorialMutation.Field()
+	update_tutorial = TutorialMutation.Field()
