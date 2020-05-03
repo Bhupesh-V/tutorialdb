@@ -66,3 +66,5 @@ class Query(object):
 class Mutation(object):
 	create_tutorial = TutorialMutation.Field()
 	update_tutorial = TutorialMutation.Field()
+	create_tag = TagMutation.Field()
+	update_tag = TagMutation.Field()

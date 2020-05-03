@@ -8,3 +8,8 @@ class TagMutation(SerializerMutation):
 		model_operations = ['create', 'update']
 		lookup_field = 'id'
 
+class TutorialMutation(SerializerMutation):
+	class Meta:
+		serializer_class = TutorialSerializer 
+		model_operations = ['create', 'update']
+		lookup_field = 'id'
