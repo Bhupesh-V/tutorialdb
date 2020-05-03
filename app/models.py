@@ -1,7 +1,5 @@
 from django.db import models
 from django.utils import timezone
-#todo -> import graphene
-
 
 class Tag(models.Model):
     """tags have a name, creation date and maybe description"""
