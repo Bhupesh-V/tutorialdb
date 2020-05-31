@@ -52,5 +52,5 @@ class TutorialHitCount(models.Model):
         if self.tutorial.publish:
             self.tutorial.total_hit_count = self.tutorial.total_hit_count + 1
             self.tutorial.save()
-            super(TutorialHitCount, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
         
