@@ -9,23 +9,7 @@
     </span>
   </h2>
   <div class="container">
-  {% for tutorial in tutorials %}
-    <div class="box">
-        <a href="{{ tutorial.link }}" target="_blank" id="tutorial-tag">{{ tutorial.title }}</a>
-        <div class="tile">
-          {% for tag in tutorial.tags.all %}
-          <span class="tag">
-            <b><a href="{% url 'app:tag-links' tag %}" > 📌 {{ tag }}</a></b>
-          </span>&nbsp;
-          {% endfor %}
-          <button class="fa fa-share-alt is-pulled-right" id="shareIcon"
-            onclick='share("{{ tutorial.title }}","{{ tutorial.link }}")'></button>
-        </div>
-        <br>
-        <span class="tag is-medium" style="background-color: rgb(0, 196, 167); color: white;"><b>{{ tutorial.category }}</b>
-        </span>
-    </div>
-  {% endfor %}
+    {% include 'includes/tutorial-list.html'%}
     <div class="field">
       <button class="button is-pulled-left" onclick="window.history.back();">❮ Go Back</button>
     </div>
