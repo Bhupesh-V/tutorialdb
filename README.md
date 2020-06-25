@@ -101,6 +101,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/chrisshyi"><img src="https://avatars1.githubusercontent.com/u/24416618?v=4" width="100px;" alt=""/><br /><sub><b>Chris Shyi</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=chrisshyi" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/vikneswaran20"><img src="https://avatars1.githubusercontent.com/u/8945535?v=4" width="100px;" alt=""/><br /><sub><b>vikneswaran</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=vikneswaran20" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/ObliviousParadigm"><img src="https://avatars0.githubusercontent.com/u/47667852?v=4" width="100px;" alt=""/><br /><sub><b>Adarsh Shetty</b></sub></a><br /><a href="https://github.com/Bhupesh-V/tutorialdb/commits?author=ObliviousParadigm" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->

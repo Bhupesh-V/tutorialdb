@@ -73,6 +73,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ObliviousParadigm",
+      "name": "Adarsh Shetty",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/47667852?v=4",
+      "profile": "https://github.com/ObliviousParadigm",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
