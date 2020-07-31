@@ -119,15 +119,19 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 # Extra lookup directories for collectstatic to find static files
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(PROJECT_ROOT, 'static'),
+# )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+# Use this instead for testing, without having to run 'python manage.py collectstatic'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
