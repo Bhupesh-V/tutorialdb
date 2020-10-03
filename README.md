@@ -17,8 +17,8 @@
 
 ### About the Project 🔘
 
-- **tutorialdb** is a small scale search engine for programming/dev tutorials, it is meant to help anyone who is getting started to learn a new technology.
-- The sole purpose of tutorialdb is to help people get to resoures which might help them learn new things for e.g sometimes there are tutorials on personal blogs which do not get indexed by Google easily.
+- **tutorialdb** is a small-scale search engine for programming/dev tutorials, it is meant to help anyone who is getting started to learn a new technology.
+- The sole purpose of tutorialdb is to help people get to resources which might help them learn new things for e.g. sometimes there are tutorials on personal blogs which do not get indexed by Google easily.
 - All the content (tutorials) is owned by the respective authors/sites.
 - tutorialdb maintains its own database saving the links to tutorials and some meta info.
 
