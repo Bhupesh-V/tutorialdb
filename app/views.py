@@ -1,4 +1,7 @@
 import time
+import logging
+
+logger = logging.getLogger(__name__)
 
 from django.core.cache import cache
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -22,27 +25,75 @@ class HomePageView(TemplateView):
 
 
 def search_query(request):
-    """view for the search results"""
-    query = request.GET.get('q').lower()
+    """view for the search results
+    search results (that meet category constraint) are prioritized by:
+    1 - Title contains the exact keyword(s)
+    2 - Tags contain the exact keyword(s)
+    3 - Title contains partial keyword matches
+    """
+    try:
+        # if somehow query is an empty string
+        query = request.GET.get('q').lower().strip()
+    except AttributeError:
+        # pretend it's a space
+        query = " "
     category = request.GET.get('category')
     list_query = query.split()
 
     start_time = time.time()
 
-    if category is not None:
-        tutorials = Tutorial.objects.filter(
-            (Q(title__icontains=query) | Q(tags__name__in=list_query))
-            & Q(category__icontains=category)
-        ).order_by('id').filter(publish=True).distinct()
+    # Begin with Category-valid Tutorials
+    all_tutorials = Tutorial.objects.filter(category=category) if category else Tutorial.objects.all()
+    logger.debug(f"all tutorials {all_tutorials}")
+    if len(list_query):
+        # Get all Tutorials with partial keyword matches in title OR exact keyword titles in tags
+        partial_title_matches = Q()
+        for keyword in list_query:
+            logger.debug(f"Keyword is {keyword}")
+            partial_title_matches.add(Q(title__icontains=keyword), Q.OR)
+
+        filtered_tutorials = all_tutorials.filter(
+            Q(tags__name__in=list_query) | partial_title_matches
+            ).filter(publish=True).distinct()
+        
+        # Now to do this sorting operation, we'll have to convert to a list     
+        def relevance_order(tut):
+            title_set = set(tut.title.lower().split())
+            logger.debug(f"titleset is {title_set}")
+            query_set = set(list_query)
+            logger.debug(f"queryset is {query_set}")
+            tag_set = set(tut.tags.values_list('name', flat=True))
+            logger.debug(f"tagset is {tag_set}")
+            title_score = len(title_set & query_set)
+            tag_score = len(tag_set & query_set)
+            # give more weight to exact title matches
+            logger.debug(f"{tut}: {title_score}*5 + {tag_score}")
+            return -(title_score *5 + tag_score)
+
+        sorted_tutorials = sorted(filtered_tutorials, key=relevance_order)
+        logger.debug(f"filtered_tut is {filtered_tutorials}")
+        logger.debug(f"sorted_tut is {sorted_tutorials}")
+        
     else:
-        tutorials = Tutorial.objects.filter(
-            (Q(title__icontains=query) | Q(tags__name__in=list_query))
-        ).order_by('id').filter(publish=True).distinct()
+        # no need to go through all this trouble if user searched an empty string!
+        sorted_tutorials = all_tutorials
+
+
+
+    # if category is not None:
+    #     tutorials = Tutorial.objects.filter(
+    #         (Q(title__icontains=query) | Q(tags__name__in=list_query))
+    #         & Q(category__icontains=category)
+    #     ).order_by('id').filter(publish=True).distinct()
+    # else:
+    #     tutorials = Tutorial.objects.filter(
+    #         (Q(title__icontains=query) | Q(tags__name__in=list_query))
+    #     ).order_by('id').filter(publish=True).distinct()
     end_time = time.time()
-    total = len(tutorials)
+    total = len(sorted_tutorials)
     result_time = round(end_time - start_time, 3)
 
-    paginator = Paginator(tutorials, 3)
+    paginator = Paginator(sorted_tutorials, 3)
     page = request.GET.get('page')
     try:
         tutorials = paginator.page(page)
@@ -88,6 +139,7 @@ def taglinks(request, tagname):
     """view for the tutorials with the {tagname}"""
     taglist = []
     taglist.append(tagname)
+    # tutorials = Tag.objects.get(name = tagname).tutorial_set.all().filter(publish=True)
     tutorials = Tutorial.objects.filter(tags__name__in=taglist, publish=True)
     context = {
         'tag': tagname,
