@@ -34,12 +34,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphene_django',
     'rest_framework',
     'app',
     'api',
     'taggie',
     'import_export',
 ]
+
+GRAPHENE = {
+
+    'SCHEMA': 'tutorialdb.schema.schema'
+ }
 
 REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_CLASSES': [
