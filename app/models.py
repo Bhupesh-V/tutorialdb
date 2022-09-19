@@ -36,6 +36,21 @@ class Tutorial(models.Model):
     category = models.CharField(max_length=20, choices=CATEGORIES)
     created_date = models.DateTimeField(default=timezone.now)
     publish = models.BooleanField(default=False)
+    total_hit_count = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
+
+class TutorialHitCount(models.Model):
+    tutorial = models.ForeignKey(Tutorial, on_delete=models.DO_NOTHING)
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.tutorial.title + '-' + str(self.created_date)
+
+    def save(self, *args, **kwargs):
+        if self.tutorial.publish:
+            self.tutorial.total_hit_count = self.tutorial.total_hit_count + 1
+            self.tutorial.save()
+            super().save(*args, **kwargs)
+        

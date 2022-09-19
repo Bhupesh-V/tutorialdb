@@ -3,10 +3,10 @@ import time
 from django.core.cache import cache
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from taggie.parser import generate_tags
-from .models import Tag, Tutorial
+from .models import Tag, Tutorial, TutorialHitCount
 from . import cache_constants
 
 
@@ -100,6 +100,11 @@ def taglinks(request, tagname):
 def about(request):
     """about view"""
     return render(request, 'about.html', {'title': 'About'})
+
+def tutorial_redirect(request, pk):
+    tutorial = Tutorial.objects.get(pk=pk, publish=True)
+    TutorialHitCount.objects.create(tutorial=tutorial)
+    return redirect(tutorial.link)
 
 
 class ContributeView(TemplateView):
