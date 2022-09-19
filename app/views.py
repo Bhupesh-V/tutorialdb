@@ -99,7 +99,20 @@ def taglinks(request, tagname):
 
 def about(request):
     """about view"""
-    return render(request, 'about.html', {'title': 'About'})
+    response = requests.get("https://api.github.com/repos/Bhupesh-V/tutorialdb/releases/latest")
+    response_json = response.json()
+    tag_name = response_json['tag_name']
+    created_at = response_json['created_at']
+    published_at = response_json['published_at']
+    changes = response_json['body']
+    context = {
+        'title': 'About',
+        'tag_name': tag_name,
+        'creation_date': created_at,
+        'publish_date': published_at,
+        "changes": changes
+    }
+    return render(request, 'about.html', context)
 
 
 class ContributeView(TemplateView):
