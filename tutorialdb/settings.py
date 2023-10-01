@@ -7,7 +7,7 @@ load_dotenv()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = "t_g&c!k3xv^8tfq5r&4$nd+(j6j35r6l^-+zm%olgqtb_9kt(o"
 
 try:
     LOCAL_HOST = os.environ['LOCAL_HOST'] # your local IP to test the site on your network
@@ -125,19 +125,29 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+from django.conf import settings
 
+base_dir = settings.BASE_DIR
 PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
+
 
 # Location of all static files
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(base_dir, 'staticfiles')
 
 # Extra lookup directories for collectstatic to find static files
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
-
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_DIRS = [
+    os.path.join(base_dir, 'tutorialdb/static'),
+]
+print("STATICFILES_DIRS",STATICFILES_DIRS)
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.django.GzipManifestStaticFilesStorage",
+    },
+}
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+FILE_CHARSET = 'utf-8'
 
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)

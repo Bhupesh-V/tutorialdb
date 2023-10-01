@@ -1,0 +1,33 @@
+a.navbar-item {
+  cursor: pointer;
+  color: white;
+}
+.navbar-menu {
+  background-color: #2B2828;
+  box-shadow: 0 8px 16px rgba(10,10,10,.1);
+  padding: .5rem 0;
+}
+.customBurger{
+	background-color: white;
+}
+#shareIcon {
+	display: none;
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+	#shareIcon {
+		display: inline;
+	}
+}
+#tutorial-tag {
+	color: blue;
+}
+
+summary.title {
+    cursor: pointer;
+    outline: none;
+    float: left;
+}
+
+summary.title + .table-container {
+    clear: both;
+}
