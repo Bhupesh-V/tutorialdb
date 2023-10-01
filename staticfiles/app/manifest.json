@@ -1,0 +1,20 @@
+{
+  "short_name": "tutorialdb",
+  "name": "tutorialdb",
+  "icons": [
+    {
+      "src": "/static/app/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/app/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#2B2828",
+  "background_color": "#ffffff"
+}

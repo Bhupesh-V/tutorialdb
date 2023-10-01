@@ -1,0 +1,12 @@
+Collecting Django
+  Using cached https://files.pythonhosted.org/packages/97/8d/03ac2f7a3f751f597be12c03a09147f9ca80906264044bb05758bbcc2b32/Django-3.2.21-py3-none-any.whl
+Collecting sqlparse>=0.2.2 (from Django)
+  Using cached https://files.pythonhosted.org/packages/98/5a/66d7c9305baa9f11857f247d4ba761402cea75db6058ff850ed7128957b7/sqlparse-0.4.4-py3-none-any.whl
+Collecting asgiref<4,>=3.3.2 (from Django)
+  Using cached https://files.pythonhosted.org/packages/fe/66/577f32b54c50dcd8dec38447258e82ed327ecb86820d67ae7b3dea784f13/asgiref-3.4.1-py3-none-any.whl
+Collecting pytz (from Django)
+  Using cached https://files.pythonhosted.org/packages/32/4d/aaf7eff5deb402fd9a24a1449a8119f00d74ae9c2efa79f8ef9994261fc2/pytz-2023.3.post1-py2.py3-none-any.whl
+Collecting typing-extensions; python_version < "3.8" (from asgiref<4,>=3.3.2->Django)
+  Using cached https://files.pythonhosted.org/packages/45/6b/44f7f8f1e110027cf88956b59f2fad776cca7e1704396d043f89effd3a0e/typing_extensions-4.1.1-py3-none-any.whl
+Installing collected packages: sqlparse, typing-extensions, asgiref, pytz, Django
+Successfully installed Django-3.2.21 asgiref-3.4.1 pytz-2023.3.post1 sqlparse-0.4.4 typing-extensions-4.1.1
